@@ -7,7 +7,8 @@
 -   [ ] add loading sates
 
 ### Backend
--   [ ] implement filters
+-   [x] implement single select filters
+-   [ ] implement category filter
 
 ### Integration
 -   [ ] finish useResults hook
