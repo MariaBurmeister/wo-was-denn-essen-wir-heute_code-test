@@ -3,7 +3,7 @@ import { Restaurants } from "./Restaurants";
 import { MultiSelectFilter } from "./MultiSelectFilter";
 import { SingleSelectFilter } from "./SingleSelectFilter";
 import {
-  useResults,
+  useRestaurantResults,
   FiltersState,
   CategoryTerms,
   DistanceTerms,
@@ -52,7 +52,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
     initialFiltersState
   );
 
-  const results = useResults(selectedFilters);
+  const restaurantResults = useRestaurantResults(selectedFilters);
 
   const onReset = () => {
     setFilters(initialFiltersState);
@@ -61,9 +61,6 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
   const onChangeMultiselect: ChangeEventHandler<HTMLInputElement> = (e) => {
     const filterName = e.target.name as MultiSelectFilters;
     const newValue = e.target.value as MultiSelectTerms;
-
-    console.log({ filterName });
-    console.log({ newValue });
 
     if (newValue === "all") {
       setFilters((prev: FiltersState) => {
@@ -99,6 +96,9 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
     });
   };
 
+  console.log(selectedFilters);
+  console.log(selectedFilters.category);
+
   return (
     <>
       <MultiSelectFilter
@@ -125,7 +125,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
         filterMap={veggies}
         onChange={onChangeSingleSelect}
       />
-      <Restaurants results={results} />
+      <Restaurants results={restaurantResults} />
       <button>Randomize</button>
       <button onClick={onReset}>Reset</button>
     </>

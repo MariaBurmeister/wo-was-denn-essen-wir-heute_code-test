@@ -1,4 +1,4 @@
-export { useResults } from "./useResults";
+export { useRestaurantResults } from "./useRestaurantResults";
 export type {
   RestaurantResult,
   FiltersState,
@@ -6,4 +6,4 @@ export type {
   DistanceTerms,
   PriceTerms,
   VeggiesTerms
-} from "./useResults";
+} from "./useRestaurantResults";
