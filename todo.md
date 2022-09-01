@@ -1,3 +1,6 @@
+### Basic Requirements
+-   [ ] randomise functionality
+
 ### Frontend
 -   [ ] add styles
 -   [ ] add empty sates
