@@ -1,9 +1,12 @@
+import './SelectFilter.scss';
+
 import {
     ChangeEventHandler,
     FunctionComponent,
     useEffect,
     useState
   } from "react";
+import { FilterGroup } from "./layout";
   
   type Term = string;
   type Copy = string;
@@ -20,23 +23,21 @@ import {
     useEffect(() => setSelected(selectedValues), [selectedValues]);
   
     return (
-      <fieldset>
-        <legend>{filterName}</legend>
-  
-        {filters.map(([term, copy]) => (
-          <div key={term}>
-            <input
-              type="checkbox"
-              id={term}
-              name={filterName}
-              value={term}
-              checked={selected.includes(term)}
-              onChange={onChange}
-            />
-            <label htmlFor={term}>{copy}</label>
-          </div>
-        ))}
-      </fieldset>
+      <FilterGroup filterName={filterName}>
+            {filters.map(([term, copy]) => (
+            <div className="filter_option" key={term}>
+                <input
+                type="checkbox"
+                id={term}
+                name={filterName}
+                value={term}
+                checked={selected.includes(term)}
+                onChange={onChange}
+                />
+                <label className={selected.includes(term) ? 'label_checked' : ''} htmlFor={term}>{copy}</label>
+            </div>
+            ))}
+        </FilterGroup>
     );
   };
   

@@ -1,0 +1,9 @@
+@import '../styles/variables.scss';
+
+.restaurant_item {
+    display: flex;
+    flex-direction: row;
+
+    list-style-position: inside;
+    @extend %primary-card;
+}

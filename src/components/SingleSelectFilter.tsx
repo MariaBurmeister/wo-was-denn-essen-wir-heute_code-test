@@ -1,9 +1,11 @@
+import './SelectFilter.scss';
 import {
     ChangeEventHandler,
     FunctionComponent,
     useEffect,
     useState
   } from "react";
+import { FilterGroup } from "./layout";
   
   type Term = string;
   type Copy = string;
@@ -20,11 +22,9 @@ import {
     useEffect(() => setSelected(selectedValue), [selectedValue]);
   
     return (
-      <fieldset>
-        <legend>{filterName}</legend>
-  
+     <FilterGroup filterName={filterName}>
         {filters.map(([term, copy]) => (
-          <div key={term}>
+          <div className="filter_option" key={term}>
             <input
               type="radio"
               id={term}
@@ -33,10 +33,10 @@ import {
               checked={selected === term}
               onChange={onChange}
             />
-            <label htmlFor={term}>{copy}</label>
+            <label className={selected === term ? 'label_checked' : ''} htmlFor={term}>{copy}</label>
           </div>
         ))}
-      </fieldset>
+        </FilterGroup>
     );
   };
   

@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { LunchDecisionAssistent } from './components';
 import { Page } from './components/layout';
 
@@ -9,5 +9,4 @@ function App() {
     </Page>
   );
 }
-
 export default App;

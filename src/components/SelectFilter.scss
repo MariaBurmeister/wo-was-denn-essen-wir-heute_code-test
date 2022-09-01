@@ -1,0 +1,6 @@
+@import '../styles/variables.scss';
+
+
+.filter_option {
+    @extend %check-input-as-button
+  }

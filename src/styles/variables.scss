@@ -1,0 +1,124 @@
+$primary-color: rebeccapurple;
+$secondary-color: deeppink;
+
+$text-on-primary: white;
+$text-on-secondary: white;
+
+$border-radius-sm: 0.3rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 0.1rem;
+
+$shadow-button: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+$shadow-button-hover: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+$shadow-button-active: $shadow-button;
+
+$shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;;
+
+
+%h1 {
+    color: $primary-color;
+    font-size: xx-large;
+  }
+  
+  %h2 {
+    color: $primary-color;
+    font-size: x-large;
+    font-weight: 600;
+    padding: 0.5rem;
+  }
+  
+  %h3 {
+    color: $primary-color;
+    font-size: large;
+  }
+  
+  %h4 {
+    color: $primary-color;
+    font-size: medium;
+  }
+  
+  %h5 {
+    color: $primary-color;
+    font-size: small;
+  }
+  
+  %check-input-as-button {
+    margin: 1rem 0.5rem;
+
+    input {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    label {
+      padding: 0.5rem 1rem;
+
+      color: $text-on-secondary;
+      background-color: $secondary-color;
+
+      border: 1px solid $secondary-color;
+      border-radius: $border-radius-sm;
+
+      box-shadow: $shadow-button;
+      
+      cursor: pointer;
+      
+      
+      &:hover {
+          transition: all 0.3s ease-in-out;
+          background-color: $secondary-color;
+          color: $primary-color;
+          
+          box-shadow: $shadow-button-hover;
+        }
+        
+        &:active {
+            transition: all 0.1s ease-in-out;
+
+            border: 1px solid $primary-color;
+            background-color: $primary-color;
+            color: $text-on-primary;
+
+            
+            box-shadow: $shadow-button-active;
+        }
+
+        &.label_checked {
+            transition: all 0.1s ease-in-out;
+
+            border: 1px solid $primary-color;
+            background-color: $primary-color;
+            color: $text-on-primary;
+            
+            box-shadow: $shadow-button;
+
+            &:hover {
+                transition: all 0.3s ease-in-out;
+
+                color: $secondary-color;
+                
+                box-shadow: $shadow-button-hover;
+              }
+            &:active {
+                transition: all 0.1s ease-in-out;
+
+                color: $text-on-secondary;
+                
+                box-shadow: $shadow-button-active;
+            }
+        }
+
+    }
+  }
+
+ %primary-card {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 4px;
+        box-shadow: $shadow-card;
+  } 
