@@ -20,12 +20,28 @@ let db = new sqlite3.Database('./restaurants.db');
 
 app.get("/restaurants", (req, res, next) => {
   var {query} = req;
-  db.get(`SELECT * FROM restaurants where distance > ?`, [query.distance], (err, row) => {
+  db.all(
+  `SELECT 
+    name,
+    distance,
+    price,
+    veggies,
+    category,
+    address
+  FROM 
+    restaurants 
+  WHERE 
+    distance >= ?
+  AND
+    price >= ?
+  AND
+    veggies >= ?
+  `, [query.distance, query.price, query.veggies], (err, rows) => {
     if (err) {
       res.status(400).json({"error":err.message});
       return;
     }
-    res.status(200).json(row);
+    res.status(200).json(rows);
   });
 });
 
