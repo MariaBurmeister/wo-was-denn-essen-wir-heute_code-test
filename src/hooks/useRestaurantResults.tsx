@@ -20,13 +20,13 @@ export type CategoryTerms =
   | "homeMade"
   | "other";
 
-const CategoryMap: Record<Category, CategoryTerms> = {
-  Alles: "all",
-  Burger: "burger",
-  "Pizza / Pasta": "italian",
-  Asiatisch: "asian",
-  Hausmannskost: "homeMade",
-  Sonstiges: "other"
+const CategoryMap: Record<CategoryTerms, Category> = {
+  all:'Alles',
+  burger:'Burger',
+  italian:'Pizza / Pasta',
+  asian:'Asiatisch',
+  homeMade:'Hausmannskost',
+  other:'Sonstiges'
 };
 
 export interface RestaurantResult {
@@ -63,7 +63,9 @@ export type Status = "LOADING" | "READY" | "ERROR";
 
 const getResults = (filters: FiltersState): Promise<{status: Status; restaurants:Restaurant[]}> => {
   const { category, distance, price, veggies } = filters;
-  return axios.get(`http://localhost:8080/restaurants?category=${category}&distance=${distance}&price=${price}&veggies=${veggies}`)
+  const categoryQuery = category.map(c => CategoryMap[c]);
+  const url = `http://localhost:8080/restaurants?category=${categoryQuery}&distance=${distance}&price=${price}&veggies=${veggies}`;
+  return axios.get(url)
     .then(({ data }) => {
       return {
         status: "READY" as Status,
