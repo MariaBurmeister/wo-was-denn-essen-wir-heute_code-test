@@ -1,0 +1,1 @@
+export { LunchDecisionAssistent } from "./LunchDecisionAssistent";
