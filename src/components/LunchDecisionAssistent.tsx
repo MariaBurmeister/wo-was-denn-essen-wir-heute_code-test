@@ -16,7 +16,7 @@ const category: Record<CategoryTerms, string> = {
   burger: "Burger",
   italian: "Pizza/Pasta",
   asian: "Asiatisch",
-  homeMade: "Housmannskost",
+  homeMade: "Hausmannskost",
   other: "Sonstiges"
 };
 
