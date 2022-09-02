@@ -5,7 +5,7 @@ import {
     useEffect,
     useState
   } from "react";
-import { FilterGroup } from "./layout";
+import { FilterGroup } from "./design-system";
   
   type Term = string;
   type Copy = string;
@@ -16,24 +16,24 @@ import { FilterGroup } from "./layout";
     selectedValue: string;
     onChange: ChangeEventHandler<HTMLInputElement>;
   }> = ({ filterName, filterMap, selectedValue, onChange }) => {
-    const [selected, setSelected] = useState<string>("egal");
+    const [selected, setSelected] = useState<string>("Egal");
     const filters = Object.entries(filterMap);
   
-    useEffect(() => setSelected(selectedValue), [selectedValue]);
-  
+    useEffect(() => setSelected(filterMap[selectedValue]), [selectedValue]);
+
     return (
      <FilterGroup filterName={filterName}>
         {filters.map(([term, copy]) => (
-          <div className="filter_option" key={term}>
+          <div className="filter_option" key={filterName + copy}>
             <input
               type="radio"
-              id={term}
+              id={filterName + copy}
               name={filterName}
               value={term}
-              checked={selected === term}
+              checked={selected === filterMap[term]}
               onChange={onChange}
             />
-            <label className={selected === term ? 'label_checked' : ''} htmlFor={term}>{copy}</label>
+            <label className={selected === filterMap[term] ? 'label_checked' : ''} htmlFor={filterName + copy}>{copy}</label>
           </div>
         ))}
         </FilterGroup>

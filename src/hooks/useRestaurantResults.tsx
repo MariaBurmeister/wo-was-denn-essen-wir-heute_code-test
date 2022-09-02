@@ -52,12 +52,6 @@ type Category =
   | "Sonstiges";
 
 type StarsRating = '1' | '2' | '3';
-// type Stars = '*' | '**' | '***';
-// const StarsRatingMap: Record<StarsRating, Stars> = {
-//   '1': '*',
-//   '2':'**',
-//   '3':'***'
-//   };
 
 export type Status = "LOADING" | "READY" | "ERROR";
 
