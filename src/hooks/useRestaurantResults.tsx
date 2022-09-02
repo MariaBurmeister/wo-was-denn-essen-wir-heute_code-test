@@ -52,12 +52,12 @@ type Category =
   | "Sonstiges";
 
 type StarsRating = '1' | '2' | '3';
-type Stars = '*' | '**' | '***';
-const StarsRatingMap: Record<StarsRating, Stars> = {
-  '1': '*',
-  '2':'**',
-  '3':'***'
-  };
+// type Stars = '*' | '**' | '***';
+// const StarsRatingMap: Record<StarsRating, Stars> = {
+//   '1': '*',
+//   '2':'**',
+//   '3':'***'
+//   };
 
 export type Status = "LOADING" | "READY" | "ERROR";
 
@@ -71,9 +71,9 @@ const getResults = (filters: FiltersState): Promise<{status: Status; restaurants
         status: "READY" as Status,
         restaurants: data.map((result: any) => ({
           ...result,
-          distance: StarsRatingMap[result.distance as StarsRating],
-          price: StarsRatingMap[result.price as StarsRating],
-          veggies: StarsRatingMap[result.veggies as StarsRating],
+          distance: result.distance as StarsRating,
+          price: result.price as StarsRating,
+          veggies: result.veggies as StarsRating,
           category: result.category as Category
         }))
       };

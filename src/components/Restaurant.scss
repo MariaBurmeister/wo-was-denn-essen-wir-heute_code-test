@@ -1,9 +1,38 @@
 @import '../styles/variables.scss';
 
 .restaurant_item {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1rem;
+
+    align-items: stretch;
+    text-align: center;
+  
     
     @extend %primary-card;
     @extend %unstyled-list-item;
+
+    @media screen and (max-width: 340px) {
+        grid-template-columns: 1fr;
+    }
+    
+}
+
+.restaurant_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+}
+
+.restaurant_ratings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    align-items: flex-start;
+    
+    margin: 0.5rem;
 }
