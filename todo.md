@@ -2,10 +2,11 @@
 -   [ ] randomise functionality
 
 ### Frontend
--   [ ] add styles
+-   [/] add styles
 -   [/] add empty sates
 -   [/] add loading sates
 -   [ ] restore filters tab navigation (accessibility)
+-   [ ] fix filter label word-wrap
 
 ### Backend
 -   [x] implement single select filters
