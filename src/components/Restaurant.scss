@@ -3,7 +3,7 @@
 .restaurant_item {
     display: flex;
     flex-direction: row;
-
-    list-style-position: inside;
+    
     @extend %primary-card;
+    @extend %unstyled-list-item;
 }

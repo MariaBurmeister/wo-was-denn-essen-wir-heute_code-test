@@ -18,63 +18,63 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
 %h1 {
     color: $primary-color;
     font-size: xx-large;
-  }
+}
   
-  %h2 {
-    color: $primary-color;
-    font-size: x-large;
-    font-weight: 600;
-    padding: 0.5rem;
-  }
-  
-  %h3 {
-    color: $primary-color;
-    font-size: large;
-  }
-  
-  %h4 {
-    color: $primary-color;
-    font-size: medium;
-  }
-  
-  %h5 {
-    color: $primary-color;
-    font-size: small;
-  }
-  
-  %check-input-as-button {
-    margin: 1rem 0.5rem;
+%h2 {
+color: $primary-color;
+font-size: x-large;
+font-weight: 600;
+padding: 0.5rem;
+}
+
+%h3 {
+color: $primary-color;
+font-size: large;
+}
+
+%h4 {
+color: $primary-color;
+font-size: medium;
+}
+
+%h5 {
+color: $primary-color;
+font-size: small;
+}
+
+%check-input-as-button {
+margin: 1rem 0.5rem;
 
     input {
-      border: none;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
     }
     label {
-      padding: 0.5rem 1rem;
+        padding: 0.5rem 1rem;
 
-      color: $text-on-secondary;
-      background-color: $secondary-color;
+        color: $text-on-secondary;
+        background-color: $secondary-color;
 
-      border: 1px solid $secondary-color;
-      border-radius: $border-radius-sm;
+        border: 1px solid $secondary-color;
+        border-radius: $border-radius-sm;
 
-      box-shadow: $shadow-button;
-      
-      cursor: pointer;
-      
-      
-      &:hover {
-          transition: all 0.3s ease-in-out;
-          background-color: $secondary-color;
-          color: $primary-color;
-          
-          box-shadow: $shadow-button-hover;
+        box-shadow: $shadow-button;
+        
+        cursor: pointer;
+        
+        
+        &:hover {
+            transition: all 0.3s ease-in-out;
+            background-color: $secondary-color;
+            color: $primary-color;
+            
+            box-shadow: $shadow-button-hover;
         }
         
         &:active {
@@ -103,7 +103,7 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
                 color: $secondary-color;
                 
                 box-shadow: $shadow-button-hover;
-              }
+                }
             &:active {
                 transition: all 0.1s ease-in-out;
 
@@ -114,11 +114,22 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
         }
 
     }
-  }
+}
 
- %primary-card {
-        margin: 1rem;
-        padding: 1rem;
-        border-radius: 4px;
-        box-shadow: $shadow-card;
-  } 
+%primary-card {
+    margin: 1rem 0;
+    border-radius: 4px;
+    box-shadow: $shadow-card;
+} 
+
+%unstyled-list {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+%unstyled-list-item {
+    padding: 0.5rem;
+    margin: 0 0 1rem;
+    border-radius: $border-radius-sm;
+}

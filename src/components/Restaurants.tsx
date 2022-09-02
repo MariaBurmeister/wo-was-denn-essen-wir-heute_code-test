@@ -1,3 +1,4 @@
+import './Restaurants.scss';
 import { FunctionComponent } from "react";
 import { RestaurantResult } from "../hooks";
 import { Restaurant } from "./Restaurant";
@@ -9,7 +10,7 @@ export const Restaurants: FunctionComponent<{
   const isLoading = status === "LOADING";
   const isError = status === "ERROR";
   console.log({results})
-  return(<ol>
+  return(<ol className="restaurant_list">
     {isLoading ?
     <>
       <Restaurant  name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
