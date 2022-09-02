@@ -3,15 +3,16 @@
 
 ### Frontend
 -   [ ] add styles
--   [ ] add empty sates
--   [ ] add loading sates
+-   [/] add empty sates
+-   [/] add loading sates
+-   [ ] restore filters tab navigation (accessibility)
 
 ### Backend
 -   [x] implement single select filters
 -   [ ] implement category filter
 
 ### Integration
--   [ ] finish useResults hook
+-   [x] finish useResults hook
 
 ### Test
 -   [ ] test
