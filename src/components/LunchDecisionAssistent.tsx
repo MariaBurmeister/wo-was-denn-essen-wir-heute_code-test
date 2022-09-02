@@ -2,6 +2,7 @@ import { ChangeEventHandler, FunctionComponent, useState } from "react";
 import { Restaurants } from "./Restaurants";
 import { MultiSelectFilter } from "./MultiSelectFilter";
 import { SingleSelectFilter } from "./SingleSelectFilter";
+import { Button } from "./design-system";
 import {
   useRestaurantResults,
   FiltersState,
@@ -126,8 +127,8 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
         onChange={onChangeSingleSelect}
       />
       <Restaurants results={restaurantResults} />
-      <button>Randomize</button>
-      <button onClick={onReset}>Reset</button>
+      <Button onClick={() => {}}>Randomize</Button>
+      <Button onClick={onReset}>Reset</Button>
     </>
   );
 };

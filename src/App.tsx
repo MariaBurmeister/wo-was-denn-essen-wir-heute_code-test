@@ -1,6 +1,6 @@
 import './App.scss';
 import { LunchDecisionAssistent } from './components';
-import { Page } from './components/layout';
+import { Page } from './components/design-system';
 
 function App() {
   return (

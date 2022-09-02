@@ -6,7 +6,7 @@ import {
     useEffect,
     useState
   } from "react";
-import { FilterGroup } from "./layout";
+import { FilterGroup } from "./design-system";
   
   type Term = string;
   type Copy = string;
