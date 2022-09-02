@@ -97,9 +97,6 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
     });
   };
 
-  console.log(selectedFilters);
-  console.log(selectedFilters.category);
-
   return (
     <>
       <MultiSelectFilter

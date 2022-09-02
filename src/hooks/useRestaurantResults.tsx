@@ -36,9 +36,9 @@ export interface RestaurantResult {
 
 export interface Restaurant {
   name: string;
-  distance: StarsRating;
-  price: StarsRating;
-  veggies: StarsRating;
+  distance: Rating;
+  price: Rating;
+  veggies: Rating;
   category: Category;
   address: string;
 }
@@ -51,7 +51,7 @@ type Category =
   | "Hausmannskost"
   | "Sonstiges";
 
-type StarsRating = '1' | '2' | '3';
+type Rating = '1' | '2' | '3';
 
 export type Status = "LOADING" | "READY" | "ERROR";
 
@@ -65,9 +65,9 @@ const getResults = (filters: FiltersState): Promise<{status: Status; restaurants
         status: "READY" as Status,
         restaurants: data.map((result: any) => ({
           ...result,
-          distance: result.distance as StarsRating,
-          price: result.price as StarsRating,
-          veggies: result.veggies as StarsRating,
+          distance: result.distance as Rating,
+          price: result.price as Rating,
+          veggies: result.veggies as Rating,
           category: result.category as Category
         }))
       };
@@ -91,6 +91,8 @@ export const useRestaurantResults = (filters: FiltersState): RestaurantResult =>
       setRestaurants(restaurants);
     });
   }, [filters]);
+
+ restaurants.map(r =>  console.log(r.distance,r.price, r.veggies));
 
   return {status, restaurants};
 
