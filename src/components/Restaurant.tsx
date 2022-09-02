@@ -11,8 +11,8 @@ export const Restaurant: FunctionComponent<{name: string; distance: string; pric
     </section>
     <section className='restaurant_ratings'>
         <Rating name='Entfernung' emoji={'🚗'} rating={distance} />
-        <Rating name='Preis' emoji={'💸'} rating={distance} />
-        <Rating name='Veggie Tauchlich' emoji={'🥦'} rating={distance} />
+        <Rating name='Preis' emoji={'💸'} rating={price} />
+        <Rating name='Veggie Tauchlich' emoji={'🥦'} rating={veggies} />
     </section>
 </li>
 );
