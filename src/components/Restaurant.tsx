@@ -1,8 +1,8 @@
 import './Restaurant.scss';
-import { FunctionComponent } from "react";
+import React, { FunctionComponent, Key } from "react";
 import { Rating } from './Rating';
 
-export const Restaurant: FunctionComponent<{name: string; distance: string; price: string; veggies: string; category: string; address: string;}> = ({name, distance, price, veggies, category, address}) => (
+export const Restaurant: FunctionComponent<{key?: Key; name: string; distance: string; price: string; veggies: string; category: string; address: string;}> = ({name, distance, price, veggies, category, address}) => (
 <li className="restaurant_item">
     <section className='restaurant_info'>
     <h3>{name}</h3>

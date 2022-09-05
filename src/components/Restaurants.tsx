@@ -11,20 +11,22 @@ export const Restaurants: FunctionComponent<{
   const isError = status === "ERROR";
   const isEmpty = status !== "ERROR" && restaurants.length === 0;
 
-  console.log({results})
-  return(<ol className="restaurant_list">
+  return(
+  <ol className="restaurant_list">
     {isLoading ?
     <>
-      <Restaurant  name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
-      <Restaurant  name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
-      <Restaurant  name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
+      <Restaurant key={1}   name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
+      <Restaurant key={2}   name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
+      <Restaurant key={3}   name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
     </>
     : isError ?
     <p>Something went wrong! Please refresh page.</p>
     : isEmpty ?
     <p>Sorry, no results match the chosen criteria.</p>
     : restaurants.map((result) => (
-      <Restaurant  name={result.name} distance={result.distance} price={result.price} veggies={result.veggies} category={result.category} address={result.address}/>
+      <Restaurant key={result.name}  name={result.name} distance={result.distance} price={result.price} veggies={result.veggies} category={result.category} address={result.address}/>
     ))}
-  </ol>);}
+  </ol>
+  )
+  ;}
 ;
