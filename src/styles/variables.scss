@@ -42,8 +42,58 @@ color: $primary-color;
 font-size: small;
 }
 
+%button-primary {
+    margin: 1rem 0.5rem;
+
+    padding: 0.5rem 1rem;
+
+
+    color: $text-on-secondary;
+    background-color: $secondary-color;
+
+    border: 1px solid $secondary-color;
+    border-radius: $border-radius-sm;
+
+    box-shadow: $shadow-button;
+
+    cursor: pointer;
+    font-size: medium;
+
+
+    &:hover {
+        transition: all 0.3s ease-in-out;
+        background-color: $secondary-color;
+        color: $primary-color;
+        
+        box-shadow: $shadow-button-hover;
+    }
+
+    &:focus {
+        transition: all 0.3s ease-in-out;
+        background-color: $secondary-color;
+        color: $primary-color;
+        
+        box-shadow: $shadow-button-hover;
+    }
+
+    &:active {
+        transition: all 0.1s ease-in-out;
+
+        border: 1px solid $primary-color;
+        background-color: $primary-color;
+        color: $text-on-primary;
+
+        
+        box-shadow: $shadow-button-active;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+}
 %check-input-as-button {
-margin: 1rem 0.5rem;
+    margin: 1rem 0.5rem;
 
     input {
         border: none;
@@ -55,6 +105,7 @@ margin: 1rem 0.5rem;
         position: absolute;
         width: 1px;
     }
+    
     label {
         padding: 0.5rem 1rem;
 
@@ -130,6 +181,9 @@ margin: 1rem 0.5rem;
             }
         }
 
+    }
+       &:disabled {
+      cursor: not-allowed;
     }
 }
 

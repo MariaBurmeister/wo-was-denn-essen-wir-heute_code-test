@@ -83,10 +83,7 @@ fieldset {
 
 
 button {
-  cursor: pointer;
-  &:disabled {
-    cursor: not-allowed;
-  }
+  @extend %button-primary;
 }
 
 .expanded-button{
