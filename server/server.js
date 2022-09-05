@@ -36,14 +36,24 @@ app.get("/restaurants", (req, res, next) => {
     price >= ?
   AND
     veggies >= ?
-  `, [query.distance, query.price, query.veggies], (err, rows) => {
+  AND
+  CASE 
+    WHEN instr(?, "Alles") >= 1
+      THEN instr("", category) = 0
+    WHEN instr(?, "Alles") = 0
+      THEN instr(?, category) >= 1
+  END 
+  `, [query.distance, query.price, query.veggies, query.category, query.category, query.category], (err, rows) => {
     if (err) {
       res.status(400).json({"error":err.message});
       return;
     }
+    console.log(query.category)
+
     res.status(200).json(rows);
   });
 });
+
 
 // db.close();
 const PORT = process.env.PORT || 8080;
