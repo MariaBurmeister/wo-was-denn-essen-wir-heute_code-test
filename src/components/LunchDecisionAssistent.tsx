@@ -1,8 +1,8 @@
-import { ChangeEventHandler, FunctionComponent, useState } from "react";
+import { ChangeEventHandler, FunctionComponent, ReactNode, useEffect, useState } from "react";
 import { Restaurants } from "./Restaurants";
 import { MultiSelectFilter } from "./MultiSelectFilter";
 import { SingleSelectFilter } from "./SingleSelectFilter";
-import { Button } from "./design-system";
+import { Button, InputButton } from "./design-system";
 import {
   useRestaurantResults,
   FiltersState,
@@ -11,6 +11,7 @@ import {
   PriceTerms,
   VeggiesTerms
 } from "../hooks";
+import { PageSection } from "./design-system";
 
 const category: Record<CategoryTerms, string> = {
   all: "Alles",
@@ -52,11 +53,20 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
   const [selectedFilters, setFilters] = useState<FiltersState>(
     initialFiltersState
   );
+  const [randomize, setRandomize] = useState(false);
+  const restaurantResults = useRestaurantResults(selectedFilters, randomize);
 
-  const restaurantResults = useRestaurantResults(selectedFilters);
+  useEffect(() => {
+    setFilters(initialFiltersState);
+    setRandomize(false);
+  }, [])
 
   const onReset = () => {
     setFilters(initialFiltersState);
+    setRandomize(false);
+  };
+  const onRandomize = () => {
+    setRandomize(!randomize);
   };
 
   const onChangeMultiselect: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -100,7 +110,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
   return (
     <>
     <PageSection title="Filters">
-      <MultiSelectFilter
+    <MultiSelectFilter
         filterName="category"
         selectedValues={selectedFilters.category}
         filterMap={category}

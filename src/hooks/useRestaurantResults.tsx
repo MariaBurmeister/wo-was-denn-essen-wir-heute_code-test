@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { shuffleArray } from "../utils";
 
 export interface FiltersState {
   category: CategoryTerms[];
@@ -80,7 +81,7 @@ const getResults = (filters: FiltersState): Promise<{status: Status; restaurants
 
 
 
-export const useRestaurantResults = (filters: FiltersState): RestaurantResult => {
+export const useRestaurantResults = (filters: FiltersState, randomize: boolean): RestaurantResult => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [status, setStatus] = useState<Status>('LOADING');
 
@@ -90,10 +91,9 @@ export const useRestaurantResults = (filters: FiltersState): RestaurantResult =>
       setStatus(status);
       setRestaurants(restaurants);
     });
-  }, [filters]);
+  }, [filters, randomize]);
 
- restaurants.map(r =>  console.log(r.distance,r.price, r.veggies));
 
-  return {status, restaurants};
+  return {status, restaurants : randomize ? shuffleArray(restaurants) : restaurants};
 
 }
