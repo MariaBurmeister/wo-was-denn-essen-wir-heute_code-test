@@ -99,6 +99,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
 
   return (
     <>
+    <PageSection title="Filters">
       <MultiSelectFilter
         filterName="category"
         selectedValues={selectedFilters.category}
@@ -123,9 +124,16 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
         filterMap={veggies}
         onChange={onChangeSingleSelect}
       />
+    </PageSection>
+    <PageSection title="Results" 
+      headerActions={
+        <>
+          <InputButton type='checkbox' name="randomize" id='randomize' checked={randomize} disabled={false} onChange={onRandomize}>Randomize</InputButton>
+          <Button onClick={onReset}>Reset</Button>
+        </>
+    }>
       <Restaurants results={restaurantResults} />
-      <Button onClick={() => {}}>Randomize</Button>
-      <Button onClick={onReset}>Reset</Button>
+    </PageSection>
     </>
   );
 };
