@@ -58,6 +58,7 @@ margin: 1rem 0.5rem;
     label {
         padding: 0.5rem 1rem;
 
+
         color: $text-on-secondary;
         background-color: $secondary-color;
 
@@ -70,6 +71,14 @@ margin: 1rem 0.5rem;
         
         
         &:hover {
+            transition: all 0.3s ease-in-out;
+            background-color: $secondary-color;
+            color: $primary-color;
+            
+            box-shadow: $shadow-button-hover;
+        }
+
+        &:focus-within {
             transition: all 0.3s ease-in-out;
             background-color: $secondary-color;
             color: $primary-color;
@@ -104,6 +113,14 @@ margin: 1rem 0.5rem;
                 
                 box-shadow: $shadow-button-hover;
                 }
+            &:focus-within {
+                transition: all 0.3s ease-in-out;
+
+                color: $secondary-color;
+                
+                box-shadow: $shadow-button-hover;
+                }
+
             &:active {
                 transition: all 0.1s ease-in-out;
 

@@ -1,11 +1,10 @@
-import './SelectFilter.scss';
 import {
     ChangeEventHandler,
     FunctionComponent,
     useEffect,
     useState
   } from "react";
-import { FilterGroup } from "./design-system";
+import { FilterGroup, InputButton } from "./design-system";
   
   type Term = string;
   type Copy = string;
@@ -24,17 +23,14 @@ import { FilterGroup } from "./design-system";
     return (
      <FilterGroup filterName={filterName}>
         {filters.map(([term, copy]) => (
-          <div className="filter_option" key={filterName + copy}>
-            <input
-              type="radio"
+          <InputButton
+            type="radio"
               id={filterName + copy}
               name={filterName}
               value={term}
               checked={selected === filterMap[term]}
               onChange={onChange}
-            />
-            <label className={selected === filterMap[term] ? 'label_checked' : ''} htmlFor={filterName + copy}>{copy}</label>
-          </div>
+          >{copy}</InputButton>
         ))}
         </FilterGroup>
     );

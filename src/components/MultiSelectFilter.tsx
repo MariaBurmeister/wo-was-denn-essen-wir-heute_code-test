@@ -1,12 +1,10 @@
-import './SelectFilter.scss';
-
 import {
     ChangeEventHandler,
     FunctionComponent,
     useEffect,
     useState
   } from "react";
-import { FilterGroup } from "./design-system";
+import { FilterGroup, InputButton } from "./design-system";
   
   type Term = string;
   type Copy = string;
@@ -25,17 +23,14 @@ import { FilterGroup } from "./design-system";
     return (
       <FilterGroup filterName={filterName}>
             {filters.map(([term, copy]) => (
-            <div className="filter_option" key={term}>
-                <input
+              <InputButton
                 type="checkbox"
                 id={term}
                 name={filterName}
                 value={term}
                 checked={selected.includes(term)}
                 onChange={onChange}
-                />
-                <label className={selected.includes(term) ? 'label_checked' : ''} htmlFor={term}>{copy}</label>
-            </div>
+              >{copy}</InputButton>
             ))}
         </FilterGroup>
     );
