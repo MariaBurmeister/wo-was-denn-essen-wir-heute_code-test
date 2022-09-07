@@ -6,13 +6,54 @@ $text-on-secondary: white;
 
 $border-radius-sm: 0.3rem;
 $border-radius-md: 0.5rem;
-$border-radius-lg: 0.1rem;
+$border-radius-lg: 1rem;
 
 $shadow-button: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 $shadow-button-hover: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 $shadow-button-active: $shadow-button;
 
 $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;;
+
+
+%button-base {
+    margin: 1rem 0.5rem;
+    padding: 0.5rem 1rem;
+
+    border: 1px solid;
+    border-radius: $border-radius-sm;
+
+    box-shadow: $shadow-button;
+
+    cursor: pointer;
+    font-size: medium;
+    font-weight: 600;
+
+    transition: all 0.3s ease-in-out;
+
+    outline: solid 0px;
+
+    &:hover {        
+        outline: solid 3px;
+        
+        box-shadow: $shadow-button-hover;
+    }
+
+    &:focus {        
+        outline: solid 3px;
+        
+        box-shadow: $shadow-button-hover;
+    }
+
+    &:active {
+        outline: solid 3px;
+        
+        box-shadow: $shadow-button-active;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+}
 
 
 %h1 {
@@ -43,53 +84,32 @@ font-size: small;
 }
 
 %button-primary {
-    margin: 1rem 0.5rem;
 
-    padding: 0.5rem 1rem;
+    @extend %button-base;
 
 
-    color: $text-on-secondary;
+    border-color:$secondary-color;
     background-color: $secondary-color;
+    
+    color: $text-on-secondary;
 
-    border: 1px solid $secondary-color;
-    border-radius: $border-radius-sm;
-
-    box-shadow: $shadow-button;
-
-    cursor: pointer;
-    font-size: medium;
-
-
-    &:hover {
-        transition: all 0.3s ease-in-out;
-        background-color: $secondary-color;
+    &:hover {        
         color: $primary-color;
 
-        outline: $secondary-color solid 3px;
-        
-        box-shadow: $shadow-button-hover;
+        outline-color: $secondary-color;
     }
 
-    &:focus {
-        transition: all 0.3s ease-in-out;
-        background-color: $secondary-color;
-        color: $primary-color;
-
-        outline: $secondary-color solid 3px;
-        
-        box-shadow: $shadow-button-hover;
+    &:focus {        
+        outline-color: $secondary-color;
     }
 
     &:active {
-        transition: all 0.1s ease-in-out;
-
-        border: 1px solid $primary-color;
+        border-color: $primary-color;
         background-color: $primary-color;
+
         color: $text-on-primary;
 
-        outline: $primary-color solid 3px;
-        
-        box-shadow: $shadow-button-active;
+        outline-color: $primary-color;
     }
 
     &:disabled {
@@ -99,99 +119,88 @@ font-size: small;
 }
 
 %check-input-as-button {
-    margin: 1rem 0.5rem;
+    @extend %button-base;
+    
+
+    border-color: $secondary-color;    
+    background-color: $secondary-color;
+    
+    color: $text-on-secondary;
+
+
     white-space: normal; 
     text-align: center;
+    
+    &:hover {        
+        color: $primary-color;
 
-    input {
-        @extend %screen-reader-only
+        outline: $secondary-color solid 3px;
+        
+        box-shadow: $shadow-button-hover;
+    }
+
+    &:focus-within {        
+        outline: $secondary-color solid 3px;
+        
+        box-shadow: $shadow-button-hover;
     }
     
-        padding: 0.5rem 1rem;
+    &:active {
+        border-color: $primary-color;
+        background-color: $primary-color;
+        
+        color: $text-on-primary;
 
+        outline: $primary-color solid 3px;
+        
+        box-shadow: $shadow-button-active;
+    }
 
-        color: $text-on-secondary;
-        background-color: $secondary-color;
+    &.label_checked {
+        border-color: $primary-color;
+        background-color: $primary-color;
 
-        border: 1px solid $secondary-color;
-        border-radius: $border-radius-sm;
-
+        color: $text-on-primary;
+        
         box-shadow: $shadow-button;
-        
-        cursor: pointer;
-        
-        
+
         &:hover {
-            transition: all 0.3s ease-in-out;
-            background-color: $secondary-color;
-            color: $primary-color;
-
-            outline: $secondary-color solid 3px;
-            
-            box-shadow: $shadow-button-hover;
-        }
-
-        &:focus-within {
-            transition: all 0.3s ease-in-out;
-            background-color: $secondary-color;
-            color: $text-on-primary;
-
-            outline: $secondary-color solid 3px;
-            
-            box-shadow: $shadow-button-hover;
-        }
-        
-        &:active {
-            transition: all 0.1s ease-in-out;
-
-            border: 1px solid $primary-color;
-            background-color: $primary-color;
-            color: $text-on-primary;
+            color: $secondary-color;
 
             outline: $primary-color solid 3px;
+
+            box-shadow: $shadow-button-hover;
+        }
+        &:focus-within {
+            color: $text-on-primary;
+            
+            outline: $primary-color solid 3px;
+            
+            box-shadow: $shadow-button-hover;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+
+        &:active {
+            border-color: $secondary-color;
+            background-color: $secondary-color;
+            
+            color: $text-on-secondary;
+            
+            outline: $secondary-color solid 3px;
             
             box-shadow: $shadow-button-active;
         }
+    }
 
-        &.label_checked {
-            transition: all 0.1s ease-in-out;
+    &:disabled {
+        cursor: not-allowed;
+    }
 
-            border: 1px solid $primary-color;
-            background-color: $primary-color;
-            color: $text-on-primary;
-            
-            box-shadow: $shadow-button;
-
-            &:hover {
-                transition: all 0.3s ease-in-out;
-
-                color: $secondary-color;
-
-                outline: $primary-color solid 3px;
-
-                box-shadow: $shadow-button-hover;
-            }
-            &:focus-within {
-                transition: all 0.3s ease-in-out;
-
-                color: $secondary-color;
-                
-                outline: $primary-color solid 3px;
-                
-                box-shadow: $shadow-button-hover;
-            }
-
-            &:active {
-                transition: all 0.1s ease-in-out;
-
-                color: $text-on-secondary;
-                
-                box-shadow: $shadow-button-active;
-            }
-        }
-
-       &:disabled {
-      cursor: not-allowed;
+    input {
+        @extend %screen-reader-only
     }
 }
 
