@@ -64,6 +64,8 @@ font-size: small;
         transition: all 0.3s ease-in-out;
         background-color: $secondary-color;
         color: $primary-color;
+
+        outline: $secondary-color solid 3px;
         
         box-shadow: $shadow-button-hover;
     }
@@ -85,6 +87,7 @@ font-size: small;
         background-color: $primary-color;
         color: $text-on-primary;
 
+        outline: $primary-color solid 3px;
         
         box-shadow: $shadow-button-active;
     }
@@ -122,6 +125,8 @@ font-size: small;
             transition: all 0.3s ease-in-out;
             background-color: $secondary-color;
             color: $primary-color;
+
+            outline: $secondary-color solid 3px;
             
             box-shadow: $shadow-button-hover;
         }
@@ -129,7 +134,7 @@ font-size: small;
         &:focus-within {
             transition: all 0.3s ease-in-out;
             background-color: $secondary-color;
-            color: $primary-color;
+            color: $text-on-primary;
 
             outline: $secondary-color solid 3px;
             
@@ -143,6 +148,7 @@ font-size: small;
             background-color: $primary-color;
             color: $text-on-primary;
 
+            outline: $primary-color solid 3px;
             
             box-shadow: $shadow-button-active;
         }
@@ -160,17 +166,20 @@ font-size: small;
                 transition: all 0.3s ease-in-out;
 
                 color: $secondary-color;
-                
+
+                outline: $primary-color solid 3px;
+
                 box-shadow: $shadow-button-hover;
-                }
+            }
             &:focus-within {
                 transition: all 0.3s ease-in-out;
 
                 color: $secondary-color;
+                
                 outline: $primary-color solid 3px;
                 
                 box-shadow: $shadow-button-hover;
-                }
+            }
 
             &:active {
                 transition: all 0.1s ease-in-out;
