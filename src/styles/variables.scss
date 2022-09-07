@@ -72,6 +72,8 @@ font-size: small;
         transition: all 0.3s ease-in-out;
         background-color: $secondary-color;
         color: $primary-color;
+
+        outline: $secondary-color solid 3px;
         
         box-shadow: $shadow-button-hover;
     }
@@ -92,21 +94,14 @@ font-size: small;
     }
 
 }
+
 %check-input-as-button {
     margin: 1rem 0.5rem;
 
     input {
-        border: none;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
+        @extend %screen-reader-only
     }
     
-    label {
         padding: 0.5rem 1rem;
 
 
@@ -133,6 +128,8 @@ font-size: small;
             transition: all 0.3s ease-in-out;
             background-color: $secondary-color;
             color: $primary-color;
+
+            outline: $secondary-color solid 3px;
             
             box-shadow: $shadow-button-hover;
         }
@@ -168,6 +165,7 @@ font-size: small;
                 transition: all 0.3s ease-in-out;
 
                 color: $secondary-color;
+                outline: $primary-color solid 3px;
                 
                 box-shadow: $shadow-button-hover;
                 }
@@ -181,7 +179,6 @@ font-size: small;
             }
         }
 
-    }
        &:disabled {
       cursor: not-allowed;
     }
@@ -203,4 +200,17 @@ font-size: small;
     padding: 0.5rem 1rem;
     margin: 0 0 1rem;
     border-radius: $border-radius-sm;
+}
+
+%screen-reader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+    word-wrap: normal;
 }
