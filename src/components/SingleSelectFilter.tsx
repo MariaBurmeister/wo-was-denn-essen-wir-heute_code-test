@@ -24,12 +24,12 @@ import { FilterGroup, InputButton } from "./design-system";
      <FilterGroup filterName={filterName}>
         {filters.map(([term, copy]) => (
           <InputButton
+            key={filterName + term}
             type="radio"
-              id={filterName + copy}
-              name={filterName}
-              value={term}
-              checked={selected === filterMap[term]}
-              onChange={onChange}
+            name={filterName}
+            value={term}
+            checked={selected === filterMap[term]}
+            onChange={onChange}
           >{copy}</InputButton>
         ))}
         </FilterGroup>

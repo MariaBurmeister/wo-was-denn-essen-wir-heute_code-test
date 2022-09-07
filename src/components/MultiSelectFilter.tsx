@@ -24,8 +24,8 @@ import { FilterGroup, InputButton } from "./design-system";
       <FilterGroup filterName={filterName}>
             {filters.map(([term, copy]) => (
               <InputButton
+                key={filterName + term}
                 type="checkbox"
-                id={term}
                 name={filterName}
                 value={term}
                 checked={selected.includes(term)}
