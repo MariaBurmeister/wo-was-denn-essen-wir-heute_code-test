@@ -97,6 +97,8 @@ font-size: small;
 
 %check-input-as-button {
     margin: 1rem 0.5rem;
+    white-space: normal; 
+    text-align: center;
 
     input {
         @extend %screen-reader-only
