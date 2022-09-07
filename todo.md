@@ -5,8 +5,11 @@
 -   [/] add styles
 -   [/] add empty sates
 -   [/] add loading sates
--   [x] restore filters tab navigation (accessibility)
 -   [ ] fix filter label word-wrap
+
+## Accessibility
+-   [x] restore filters tab navigation
+-   [ ] acessibility proof contrasts
 
 ### Backend
 -   [x] implement single select filters
