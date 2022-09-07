@@ -1,10 +1,10 @@
-import { FunctionComponent } from "react";
+import { ButtonHTMLAttributes, FunctionComponent, ReactNode } from "react";
 
-export type ButtonProps = {
-    children?: HTMLCollection | string,
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    children?: ReactNode,
     onClick: (e?: React.MouseEvent) => void
-  } & React.ButtonHTMLAttributes<HTMLButtonElement>;
+  } ;
 
 export const Button: FunctionComponent<ButtonProps> = ({children, onClick, ...rest}) => {
-  return <button className="button" onClick={onClick}  {...rest} >{children}</button>;
+  return <button {...rest} className="button" onClick={onClick}   >{children}</button>;
 }
