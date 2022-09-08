@@ -4,7 +4,7 @@ import {
     useEffect,
     useState
   } from "react";
-import { FilterGroup, InputButton } from "./design-system";
+import { InputGroup, InputButton, Button } from "./design-system";
   
   type Term = string;
   type Copy = string;
@@ -14,14 +14,15 @@ import { FilterGroup, InputButton } from "./design-system";
     filterMap: Record<Term, Copy>;
     selectedValues: string[];
     onChange: ChangeEventHandler<HTMLInputElement>;
-  }> = ({ filterName, filterMap, selectedValues, onChange }) => {
+    disabled?: boolean;
+  }> = ({ filterName, filterMap, selectedValues, onChange, disabled }) => {
     const [selected, setSelected] = useState<string[]>([]);
     const filters = Object.entries(filterMap);
   
     useEffect(() => setSelected(selectedValues), [selectedValues]);
   
     return (
-      <FilterGroup filterName={filterName}>
+      <InputGroup groupName={filterName} disabled={disabled}>
             {filters.map(([term, copy]) => (
               <InputButton
                 key={filterName + term}
@@ -32,7 +33,7 @@ import { FilterGroup, InputButton } from "./design-system";
                 onChange={onChange}
               >{copy}</InputButton>
             ))}
-        </FilterGroup>
+        </InputGroup>
     );
   };
   
