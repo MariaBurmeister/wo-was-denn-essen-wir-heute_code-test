@@ -52,6 +52,9 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
 
     &:disabled {
       cursor: not-allowed;
+      outline: none;
+      border: none;
+      box-shadow: none;
     }
 }
 
@@ -113,7 +116,8 @@ font-size: small;
     }
 
     &:disabled {
-      cursor: not-allowed;
+        background-color: lightgray;
+        color: white;
     }
 
 }
@@ -193,10 +197,23 @@ font-size: small;
             
             box-shadow: $shadow-button-active;
         }
+
+        &.disabled {
+            cursor: not-allowed;
+            background-color: lightgray;
+            color: white;
+            outline: none;
+            box-shadow: none;
+        }
+        
     }
 
-    &:disabled {
+    &.disabled {
         cursor: not-allowed;
+        background-color: lightgray;
+        color: white;
+        outline: none;
+        box-shadow: none;
     }
 
     input {

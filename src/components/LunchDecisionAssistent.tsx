@@ -138,7 +138,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
     <PageSection title="Results" 
       headerActions={
         <>
-          <InputButton type='checkbox' name="randomize" id='randomize' checked={randomize} disabled={false} onChange={onRandomize}>Randomize</InputButton>
+          <InputButton type='checkbox' name="randomize" id='randomize' checked={randomize} onChange={onRandomize}>{randomize ? 'Restore Order' : 'Randomize'}</InputButton>
           <Button onClick={onReset}>Reset</Button>
         </>
     }>
