@@ -1,12 +1,20 @@
 import { FunctionComponent, ReactNode } from "react";
 import './PageSection.scss';
 
-export const PageSection: FunctionComponent<{ title: string; headerActions?: ReactNode, children:ReactNode }> = ({ title, headerActions, children }) => {
+type HorizontalAlign = 'center' | 'left' | 'right';
+
+export const PageSection: FunctionComponent<{ title: string; undertitle?: string; headerActions?: ReactNode; children:ReactNode; xAlign?: HorizontalAlign}> = ({ title, undertitle, headerActions, children, xAlign = 'left' }) => {
+
+
+
     return (
-      <section className="page_section">
-        <header>
+      <section className={`page_section${xAlign ? ' ' + xAlign : ''}`}>
+        <header className={`page_section-header${xAlign ? ' ' + xAlign : ''}`}>
+          <div className={`page_section-header-titles${xAlign ? ' ' + xAlign : ''}`}>
           <h2>{title}</h2>
-          <div className="page_section_header_actions">
+          {undertitle && <aside>{undertitle}</aside>}
+          </div>
+          <div className="page_section-header-actions">
           {headerActions}
           </div>
         </header>

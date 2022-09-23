@@ -1,5 +1,5 @@
 import './Restaurant.scss';
-import React, { FunctionComponent, Key } from "react";
+import { FunctionComponent, Key } from "react";
 import { Rating } from './Rating';
 
 export const Restaurant: FunctionComponent<{key?: Key; name: string; distance: string; price: string; veggies: string; category: string; address: string;}> = ({name, distance, price, veggies, category, address}) => (

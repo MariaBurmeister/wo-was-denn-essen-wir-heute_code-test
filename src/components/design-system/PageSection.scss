@@ -1,14 +1,79 @@
+@import '../../styles/variables';
+
 .page_section{
-    padding: 0;
-    & header{
+    padding: 0 0.5rem 0 0.5rem;
+    &.center {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &.left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &.right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+}
+
+.page_section-header {
+    min-height: 4.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &.left {
+        width: 100%;
+       
+    }
+
+    &.right {
+        width: 100%;
+      
     }
 }
 
-.page_section_header_actions {
+.page_section-header-titles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    padding: 0 0.5rem;
+
+    &.center {
+        align-items: center;
+    }
+
+    &.left {
+        align-items: flex-start;
+    }
+
+    &.right {
+        align-items: flex-end;      
+    }
+
+    > h2 {
+        margin: 0;
+        padding: 0;
+    }
+    
+    > aside {
+        @extend %help-text;
+        font-weight: 600;
+        margin: 0.3rem 0 0;
+        padding: 0;
+    }
+
+}
+
+.page_section-header-actions {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;

@@ -4,7 +4,7 @@ import {
     useEffect,
     useState
   } from "react";
-import { InputGroup, InputButton, Button } from "./design-system";
+import { InputGroup, InputButton } from "./design-system";
   
   type Term = string;
   type Copy = string;

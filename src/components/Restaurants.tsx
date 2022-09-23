@@ -6,6 +6,7 @@ import { Restaurant } from "./Restaurant";
 export const Restaurants: FunctionComponent<{
   results: RestaurantResult;
 }> = ({ results }) => {
+  
   const {status, restaurants} = results;
   const isLoading = status === "LOADING";
   const isError = status === "ERROR";

@@ -1,0 +1,20 @@
+@import 'src/styles/variables';
+
+.nav-item {
+    @extend %unstyled-list-item;
+    color: $primary-color;
+    
+    > .nav-link {
+        @extend %nav-link;
+        @extend %unstyled-link;
+        text-decoration: none;
+
+        &:active {
+        
+            border-color: $primary-color;
+            
+        }
+    }
+
+  
+}

@@ -1,8 +1,8 @@
-import { ChangeEventHandler, FunctionComponent, ReactNode, useEffect, useState } from "react";
+import { ChangeEventHandler, FunctionComponent, useEffect, useState } from "react";
 import { Restaurants } from "./Restaurants";
 import { MultiSelectFilter } from "./MultiSelectFilter";
 import { SingleSelectFilter } from "./SingleSelectFilter";
-import { Button, InputButton } from "./design-system";
+import { Button, InputButton, PageSection } from "./design-system";
 import {
   useRestaurantResults,
   FiltersState,
@@ -11,7 +11,6 @@ import {
   PriceTerms,
   VeggiesTerms
 } from "../hooks";
-import { PageSection } from "./design-system";
 
 const category: Record<CategoryTerms, string> = {
   all: "Alles",
@@ -109,7 +108,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
 
   return (
     <>
-    <PageSection title="Filters">
+    <PageSection title="Filters" >
     <MultiSelectFilter
         filterName="category"
         selectedValues={selectedFilters.category}
@@ -135,7 +134,8 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
         onChange={onChangeSingleSelect}
       />
     </PageSection>
-    <PageSection title="Results" 
+    <PageSection 
+      title="Results"
       headerActions={
         <>
           <InputButton type='checkbox' name="randomize" id='randomize' checked={randomize} onChange={onRandomize}>{randomize ? 'Restore Order' : 'Randomize'}</InputButton>

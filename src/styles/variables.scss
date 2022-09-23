@@ -58,6 +58,48 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
     }
 }
 
+%nav-link {
+    margin: 1rem 0.5rem;
+    padding: 0.5rem 1rem;
+
+    line-height: 3rem;
+
+    border-bottom: 1px solid white;
+
+
+    cursor: pointer;
+    font-size: medium;
+    font-weight: 600;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {        
+
+        border-color: $secondary-color;
+
+    }
+
+    &:focus {        
+
+        border-color: $secondary-color;
+        
+    }
+
+    &:active {
+
+        color: $secondary-color;   
+        border-color: $primary-color;
+
+    }
+
+
+    &:disabled {
+      cursor: not-allowed;
+      border: none;
+      box-shadow: none;
+    }
+}
+
 
 %h1 {
     color: $primary-color;
@@ -84,6 +126,11 @@ font-size: medium;
 %h5 {
 color: $primary-color;
 font-size: small;
+}
+
+%help-text {
+color: $primary-color;
+font-size: x-small;
 }
 
 %button-primary {
@@ -221,8 +268,10 @@ font-size: small;
     }
 }
 
+
 %primary-card {
     margin: 1rem 0;
+    padding: 1rem;
     border-radius: 4px;
     box-shadow: $shadow-card;
 } 
@@ -231,12 +280,21 @@ font-size: small;
     list-style: none;
     margin: 1rem 0;
     padding: 0;
+
+    width: 100%;
+
+    :first-child {
+        margin-top: 0;
+    }
 }
 
 %unstyled-list-item {
-    padding: 0.5rem 1rem;
-    margin: 0 0 1rem;
-    border-radius: $border-radius-sm;
+    margin: 0;
+    padding: 0;
+}
+
+%unstyled-link {
+    text-decoration: none;
 }
 
 %screen-reader-only {

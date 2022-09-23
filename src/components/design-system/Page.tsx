@@ -6,11 +6,11 @@ export const Page: FunctionComponent<{
   children: ReactNode;
 }> = ({ title, children }) => {
   return (
-    <>
+      <main className="page">
         <header className="page_header">
             <h1>{title}</h1>
         </header>
-        <main className="page_content">{children}</main>
-    </>
+          {children}
+      </main>
   );
 };
