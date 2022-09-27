@@ -1,5 +1,6 @@
 export { Button } from "./Button";
 export { EmptyState } from "./EmptyState";
+export { ErrorState } from "./ErrorState";
 export { MainHeader } from "./MainHeader";
 export { Navbar } from "./Navbar";
 export { InputGroup } from "./InputGroup";
