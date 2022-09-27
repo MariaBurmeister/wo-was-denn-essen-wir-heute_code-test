@@ -2,7 +2,7 @@ import './Restaurants.scss';
 import { FunctionComponent } from "react";
 import { RestaurantResult } from "../hooks";
 import { Restaurant } from "./Restaurant";
-import { EmptyState } from './EmptyState';
+import { EmptyState } from './design-system';
 
 export const Restaurants: FunctionComponent<{
   results: RestaurantResult;
@@ -23,6 +23,7 @@ export const Restaurants: FunctionComponent<{
     </>
     : isError ?
     <p>Something went bad! Please refresh page.</p>
+    // <ErrorState message='Something went bad! Please try refreshing page.'/>
     : isEmpty ?
     <EmptyState message="No results seem to match the filtered criteria at the moment."/>
     : restaurants.map((result) => (
