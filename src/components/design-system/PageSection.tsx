@@ -3,7 +3,7 @@ import './PageSection.scss';
 
 type HorizontalAlign = 'center' | 'left' | 'right';
 
-export const PageSection: FunctionComponent<{ title: string; undertitle?: string; headerActions?: ReactNode; children:ReactNode; xAlign?: HorizontalAlign}> = ({ title, undertitle, headerActions, children, xAlign = 'left' }) => {
+export const PageSection: FunctionComponent<{ title: string; undertitle?: string | ReactNode; headerActions?: ReactNode; children:ReactNode; xAlign?: HorizontalAlign}> = ({ title, undertitle, headerActions, children, xAlign = 'left' }) => {
 
 
 
