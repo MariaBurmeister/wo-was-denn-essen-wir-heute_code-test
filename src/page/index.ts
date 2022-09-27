@@ -1,3 +1,3 @@
 export {Application} from "./Application";
-export {WrongPathPage} from "./WrongPathPage";
+export {BadPathPage} from "./BadPathPage";
 export {Home} from "./Home";

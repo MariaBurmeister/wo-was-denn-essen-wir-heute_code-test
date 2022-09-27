@@ -21,7 +21,7 @@ export const Restaurants: FunctionComponent<{
       <Restaurant key={3}   name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
     </>
     : isError ?
-    <p>Something went wrong! Please refresh page.</p>
+    <p>Something went bad! Please refresh page.</p>
     : isEmpty ?
     <p>Sorry, no results match the chosen criteria.</p>
     : restaurants.map((result) => (

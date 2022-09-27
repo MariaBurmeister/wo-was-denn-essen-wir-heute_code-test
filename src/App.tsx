@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
-import { Application, WrongPathPage, Home } from './page';
+import { Application, BadPathPage, Home } from './page';
 
 
 
@@ -13,7 +13,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='home' element={<Home />} />
           <Route path="dashboard" element={<Home />} />
-          <Route path="*" element={<WrongPathPage />} />
+          <Route path="*" element={<BadPathPage />} />
         </Route>
       </Routes>
   );
