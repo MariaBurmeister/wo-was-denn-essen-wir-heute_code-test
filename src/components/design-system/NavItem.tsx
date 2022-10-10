@@ -1,5 +1,5 @@
-import { FunctionComponent, ReactNode } from "react";
-import { Link, NavLink, useLocation, useResolvedPath } from "react-router-dom";
+import { FunctionComponent, ReactNode, useEffect, useState } from "react";
+import {  NavLink, useLocation } from "react-router-dom";
 import './NavItem.scss';
 
 
@@ -10,13 +10,16 @@ export interface NavItemProps {
 
 
 export const NavItem: FunctionComponent<NavItemProps> = ({label, to}) => {
-    // const {pathname, hash, key, search } = useLocation();
+    const {pathname} = useLocation();
+    const [isActive, setIsActive]= useState(pathname.includes(to));
 
-    // const isCurrentSelection = pathname === to;
+    useEffect(() => {
+        setIsActive(pathname.includes(to));
+    }, [pathname]);
 
     return  (
         <li className="nav-item">
-            <NavLink className='nav-link' to={to}> {label}</NavLink>
+            <NavLink className={`nav-link${isActive ? ' active' : ''}`} to={to}> {label}</NavLink>
         </li>);
 ; 
 };

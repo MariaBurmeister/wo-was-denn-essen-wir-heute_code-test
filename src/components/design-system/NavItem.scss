@@ -9,9 +9,9 @@
         @extend %unstyled-link;
         text-decoration: none;
 
-        &:active {
+        &.active {
         
-            border-color: $primary-color;
+            border-color: $secondary-color;
             
         }
     }
