@@ -6,7 +6,7 @@ export const Application: FunctionComponent = () => {
   return (
     <>
       <MainHeader />
-      <Outlet/>
+      <Outlet />
     {/* <Footer/> */}
 
     </>
