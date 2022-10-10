@@ -2,14 +2,16 @@
 -   [x] randomise functionality
 
 ### Frontend
--   [/] add styles
--   [/] add empty sates
--   [/] add loading sates
+-   [x] add styles
+-   [x] add empty sates
+-   [x] add loading sates
+-   [ ] add loading sates skeletons
 -   [x] fix filter label word-wrap
-
+-   [x] keep track of routing in main navigation
     ## Accessibility
     -   [x] restore filters tab navigation
-    -   [ ] acessibility proof contrasts
+    -   [x] acessibility proof contrasts
+    -   [x] figure out main navigation keyboard navigability
 
 ### Backend
 -   [x] implement single select filters
