@@ -15,10 +15,11 @@ import { InputGroup, InputButton } from "./design-system";
     selectedValue: string;
     onChange: ChangeEventHandler<HTMLInputElement>;
     disabled?: boolean;
-  }> = ({ filterName, filterMap, selectedValue, onChange, disabled }) => {
+    sortCondition?: ([termA, copyA]: [Term, Copy], [termB, copyB]: [Term, Copy]) => number;
+  }> = ({ filterName, filterMap, selectedValue, onChange, disabled, sortCondition }) => {
     const [selected, setSelected] = useState<string>("Egal");
-    const filters = Object.entries(filterMap);
-  
+    const filters = sortCondition ? Object.entries(filterMap).sort(sortCondition) : Object.entries(filterMap);
+
     useEffect(() => setSelected(filterMap[selectedValue]), [selectedValue]);
 
     return (

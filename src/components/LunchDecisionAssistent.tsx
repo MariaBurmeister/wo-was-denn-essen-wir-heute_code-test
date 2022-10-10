@@ -122,12 +122,14 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
         selectedValue={selectedFilters.distance}
         filterMap={distance}
         onChange={onChangeSingleSelect}
+          sortCondition={([termA], [termB]) => Number(termB) - Number(termA)}
       />
       <SingleSelectFilter
         filterName="price"
         selectedValue={selectedFilters.price}
         filterMap={price}
         onChange={onChangeSingleSelect}
+          sortCondition={([termA], [termB]) => Number(termB) - Number(termA)}
       />
       <SingleSelectFilter
         filterName="veggies"
