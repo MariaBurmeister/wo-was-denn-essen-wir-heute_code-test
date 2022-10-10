@@ -9,7 +9,7 @@ import {
   CategoryTerms,
   DistanceTerms,
   PriceTerms,
-  VeggiesTerms
+  VeggiesTerms,
 } from "../hooks";
 
 const category: Record<CategoryTerms, string> = {
@@ -18,30 +18,32 @@ const category: Record<CategoryTerms, string> = {
   italian: "Pizza/Pasta",
   asian: "Asiatisch",
   homeMade: "Hausmannskost",
-  other: "Sonstiges"
+  other: "Sonstiges",
 };
 
 const distance: Record<DistanceTerms, string> = {
-  '1': "Egal",
-  '2': "nicht so weit weg",
-  '3': "ganz nah dran"
+  "1": "nicht so weit weg",
+  "2": "ganz nah dran",
+  "3": "Egal",
 };
+
 const price: Record<PriceTerms, string> = {
-  '1': "Egal",
-  '2': "Nicht zu viel",
-  '3': "Ende des Monats"
+  "1": "Ende des Monats",
+  "2": "Nicht zu viel",
+  "3": "Egal",
 };
+
 const veggies: Record<VeggiesTerms, string> = {
-  '1': "Egal",
-  '2': "sollte schon schmecken",
-  '3': "muss ganz lecker sein"
+  "1": "Egal",
+  "2": "sollte schon schmecken",
+  "3": "muss ganz lecker sein",
 };
 
 const initialFiltersState: FiltersState = {
   category: ["all"],
-  distance: '1',
-  price: '1',
-  veggies: '1'
+  distance: "3",
+  price: "3",
+  veggies: "1",
 };
 
 

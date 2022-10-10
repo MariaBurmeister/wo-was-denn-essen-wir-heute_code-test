@@ -31,9 +31,9 @@ app.get("/restaurants", (req, res, next) => {
   FROM 
     restaurants 
   WHERE 
-    distance >= ?
+    distance <= ?
   AND
-    price >= ?
+    price <= ?
   AND
     veggies >= ?
   AND
