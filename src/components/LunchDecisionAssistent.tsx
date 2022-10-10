@@ -1,9 +1,15 @@
-import { ChangeEventHandler, FunctionComponent, useEffect, useState } from "react";
+import {
+  ChangeEventHandler,
+  FunctionComponent,
+  useEffect,
+  useState,
+} from "react";
 import { Restaurants } from "./Restaurants";
 import { MultiSelectFilter } from "./MultiSelectFilter";
 import { SingleSelectFilter } from "./SingleSelectFilter";
 import { Button, InputButton, PageSection } from "./design-system";
 import {
+  useDeepLink,
   useRestaurantResults,
   FiltersState,
   CategoryTerms,
@@ -46,26 +52,25 @@ const initialFiltersState: FiltersState = {
   veggies: "1",
 };
 
-
-type MultiSelectFilters = 'category';
+type MultiSelectFilters = "category";
 type MultiSelectTerms = CategoryTerms;
 
 export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
-  const [selectedFilters, setFilters] = useState<FiltersState>(
-    initialFiltersState
-  );
   const [randomize, setRandomize] = useState(false);
-  const restaurantResults = useRestaurantResults(selectedFilters, randomize);
+  const { deepLink, parsedSearchParams, searchParams, setSearchParams } =
+    useDeepLink({ initialSearchState: initialFiltersState });
+
+  const restaurantResults = useRestaurantResults(parsedSearchParams, randomize);
 
   useEffect(() => {
-    setFilters(initialFiltersState);
     setRandomize(false);
-  }, [])
+  }, []);
 
   const onReset = () => {
-    setFilters(initialFiltersState);
+    setSearchParams(initialFiltersState);
     setRandomize(false);
   };
+
   const onRandomize = () => {
     setRandomize(!randomize);
   };
@@ -75,79 +80,97 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
     const newValue = e.target.value as MultiSelectTerms;
 
     if (newValue === "all") {
-      setFilters((prev: FiltersState) => {
-        return { ...prev, [filterName]: ["all"] };
+      return setSearchParams((prev: URLSearchParams) => {
+        prev.set(filterName, "all");
+        return prev;
       });
-      return;
     }
 
-    setFilters((prev: FiltersState) => {
-        return prev[filterName].includes(newValue)
-        ? {
-            ...prev,
-            [filterName]: [
-              ...prev[filterName].filter((filter) => filter !== newValue)
-            ]
-          }
-        : {
-            ...prev,
-            [filterName]: [
-              ...prev[filterName].filter((filter) => filter !== "all"),
-              newValue
-            ]
-          };
+    
+    let selectedValues = searchParams.getAll(filterName);
+    setSearchParams((prev: URLSearchParams) => {
+      prev.delete(filterName);
+
+      if (selectedValues.includes(newValue)) {
+        const updatedSelectedValues = selectedValues
+          .filter((value) => value !== newValue);
+
+
+        if (updatedSelectedValues.length > 0) {
+          updatedSelectedValues.forEach((value) => prev.append(filterName, value));
+        }
+        
+      } else {
+
+        if (selectedValues.includes("all")) {
+          selectedValues = selectedValues.filter((value) => value !== "all");
+        }
+
+        [...selectedValues, newValue].forEach((value) => prev.append(filterName, value));
+
+      }
+      return prev;
     });
   };
 
   const onChangeSingleSelect: ChangeEventHandler<HTMLInputElement> = (e) => {
     const filterName = e.target.name;
     const newValue = e.target.value;
-
-    setFilters((prev: FiltersState) => {
-      return { ...prev, [filterName]: newValue };
+    setSearchParams((prev: URLSearchParams) => {
+      prev.set(filterName, newValue);
+      return prev;
     });
   };
 
   return (
     <>
-    <PageSection title="Filters" >
-    <MultiSelectFilter
-        filterName="category"
-        selectedValues={selectedFilters.category}
-        filterMap={category}
-        onChange={onChangeMultiselect}
-      />
-      <SingleSelectFilter
-        filterName="distance"
-        selectedValue={selectedFilters.distance}
-        filterMap={distance}
-        onChange={onChangeSingleSelect}
+      <PageSection title="Filters">
+        <MultiSelectFilter
+          filterName="category"
+          selectedValues={parsedSearchParams.category}
+          filterMap={category}
+          onChange={onChangeMultiselect}
+        />
+        <SingleSelectFilter
+          filterName="distance"
+          selectedValue={parsedSearchParams.distance}
+          filterMap={distance}
+          onChange={onChangeSingleSelect}
           sortCondition={([termA], [termB]) => Number(termB) - Number(termA)}
-      />
-      <SingleSelectFilter
-        filterName="price"
-        selectedValue={selectedFilters.price}
-        filterMap={price}
-        onChange={onChangeSingleSelect}
+        />
+        <SingleSelectFilter
+          filterName="price"
+          selectedValue={parsedSearchParams.price}
+          filterMap={price}
+          onChange={onChangeSingleSelect}
           sortCondition={([termA], [termB]) => Number(termB) - Number(termA)}
-      />
-      <SingleSelectFilter
-        filterName="veggies"
-        selectedValue={selectedFilters.veggies}
-        filterMap={veggies}
-        onChange={onChangeSingleSelect}
-      />
-    </PageSection>
-    <PageSection 
-      title="Results"
-      headerActions={
-        <>
-          <InputButton type='checkbox' name="randomize" id='randomize' checked={randomize} onChange={onRandomize}>{randomize ? 'Restore Order' : 'Randomize'}</InputButton>
-          <Button onClick={onReset}>Reset</Button>
-        </>
-    }>
-      <Restaurants results={restaurantResults} />
-    </PageSection>
+        />
+        <SingleSelectFilter
+          filterName="veggies"
+          selectedValue={parsedSearchParams.veggies}
+          filterMap={veggies}
+          onChange={onChangeSingleSelect}
+        />
+      </PageSection>
+      <PageSection
+        title="Results"
+        headerActions={
+          <>
+            <InputButton
+              type="checkbox"
+              name="randomize"
+              id="randomize"
+              checked={randomize}
+              onChange={onRandomize}
+            >
+              {randomize ? "Restore Order" : "Randomize"}
+            </InputButton>
+            <Button onClick={onReset}>Reset</Button>
+          </>
+        }
+      >
+        <Restaurants results={restaurantResults} />
+      </PageSection>
     </>
   );
 };
