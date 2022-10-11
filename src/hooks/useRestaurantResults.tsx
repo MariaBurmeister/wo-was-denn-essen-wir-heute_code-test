@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { shuffleArray } from "../utils";
 
 export interface FiltersState {
@@ -56,10 +57,7 @@ type Rating = '1' | '2' | '3';
 
 export type Status = "LOADING" | "READY" | "ERROR";
 
-const getResults = (filters: FiltersState): Promise<{status: Status; restaurants:Restaurant[]}> => {
-  const { category, distance, price, veggies } = filters;
-  const categoryQuery = category.map(c => CategoryMap[c]);
-  const url = `http://localhost:8080/restaurants?category=${categoryQuery}&distance=${distance}&price=${price}&veggies=${veggies}`;
+const getResults = (url: string): Promise<{status: Status; restaurants:Restaurant[]}> => {
   return axios.get(url)
     .then(({ data }) => {
       return {
@@ -69,7 +67,7 @@ const getResults = (filters: FiltersState): Promise<{status: Status; restaurants
           distance: result.distance as Rating,
           price: result.price as Rating,
           veggies: result.veggies as Rating,
-          category: result.category as Category
+          category: CategoryMap[result.category as CategoryTerms]
         }))
       };
     })
@@ -81,17 +79,21 @@ const getResults = (filters: FiltersState): Promise<{status: Status; restaurants
 
 
 
-export const useRestaurantResults = (filters: FiltersState, randomize: boolean): RestaurantResult => {
+export const useRestaurantResults = (randomize: boolean): RestaurantResult => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [status, setStatus] = useState<Status>('LOADING');
 
+  const [searchParams] = useSearchParams();
+
+  const url = `http://localhost:8080/restaurants?category=${searchParams.getAll('category')}&distance=${searchParams.get('distance')}&price=${searchParams.get('price')}&veggies=${searchParams.get('veggies')}`;
+
   useEffect(() => {
     setStatus("LOADING");
-    getResults(filters).then(({ status, restaurants }) => {
+    getResults(url).then(({ status, restaurants }) => {
       setStatus(status);
       setRestaurants(restaurants);
     });
-  }, [filters, randomize]);
+  }, [searchParams, randomize]);
 
 
   return {status, restaurants : randomize ? shuffleArray(restaurants) : restaurants};
