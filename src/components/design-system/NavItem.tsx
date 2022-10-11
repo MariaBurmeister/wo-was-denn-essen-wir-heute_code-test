@@ -10,16 +10,9 @@ export interface NavItemProps {
 
 
 export const NavItem: FunctionComponent<NavItemProps> = ({label, to}) => {
-    const {pathname} = useLocation();
-    const [isActive, setIsActive]= useState(pathname.includes(to));
-
-    useEffect(() => {
-        setIsActive(pathname.includes(to));
-    }, [pathname]);
-
     return  (
         <li className="nav-item">
-            <NavLink className={`nav-link${isActive ? ' active' : ''}`} to={to}> {label}</NavLink>
+            <NavLink className='nav-link' to={to}> {label}</NavLink>
         </li>);
 ; 
 };
