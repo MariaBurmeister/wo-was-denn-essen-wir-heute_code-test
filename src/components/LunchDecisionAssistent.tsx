@@ -28,8 +28,8 @@ const category: Record<CategoryTerms, string> = {
 };
 
 const distance: Record<DistanceTerms, string> = {
-  "1": "nicht so weit weg",
-  "2": "ganz nah dran",
+  "1": "ganz nah dran",
+  "2": "nicht so weit weg",
   "3": "Egal",
 };
 
@@ -60,7 +60,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
   const { deepLink, parsedSearchParams, searchParams, setSearchParams } =
     useDeepLink({ initialSearchState: initialFiltersState });
 
-  const restaurantResults = useRestaurantResults(parsedSearchParams, randomize);
+  const restaurantResults = useRestaurantResults(randomize);
 
   useEffect(() => {
     setRandomize(false);
