@@ -37,12 +37,13 @@ app.get("/restaurants", (req, res, next) => {
   AND
     veggies >= ?
   AND
-  CASE 
-    WHEN instr(?, "Alles") >= 1
-      THEN instr("", category) = 0
-    WHEN instr(?, "Alles") = 0
-      THEN instr(?, category) >= 1
-  END 
+    CASE 
+      WHEN instr(?, "all") >= 1
+        THEN instr("", category) = 0
+      WHEN instr(?, "all") = 0
+        THEN instr(?, category) >= 1
+    END
+  
   `, [query.distance, query.price, query.veggies, query.category, query.category, query.category], (err, rows) => {
     if (err) {
       res.status(400).json({"error":err.message});
