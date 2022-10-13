@@ -3,8 +3,10 @@ const cors = require("cors");
 const app = express();
 const sqlite3 = require('sqlite3').verbose();
 
-const allowedOrigins = ['http://localhost:3000',
-                      'http://wowasdennessenwirheute.com'];
+const allowedOrigins = [
+  'http://localhost:3000',
+  // 'http://wowasdennessenwirheute.com'
+];
 const corsOptions = {
   origin: allowedOrigins
 };
