@@ -1,11 +1,11 @@
-import { FunctionComponent, ReactElement} from "react";
+import { Children, cloneElement, DetailedHTMLProps, FunctionComponent, HTMLAttributes, ReactElement} from "react";
 
 
 import './Navbar.scss';
 import { NavItem, NavItemProps } from "./NavItem";
 
 
-interface NavBarProps {
+interface NavBarProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>{
     navName?: string;
     children: ReactElement<NavItemProps> | ReactElement<NavItemProps>[];
 }
@@ -16,10 +16,10 @@ interface ItemComposition {
 
 
 
-export const Navbar: FunctionComponent<NavBarProps> & ItemComposition = ({navName, children}) => {
+export const Navbar: FunctionComponent<NavBarProps> & ItemComposition = ({navName, children, ...rest}) => {
     
     return (
-        <nav className="nav">
+        <nav className="nav" role='navigation' aria-label={navName} {...rest}>
             <ul>
                 {children}
             </ul>
