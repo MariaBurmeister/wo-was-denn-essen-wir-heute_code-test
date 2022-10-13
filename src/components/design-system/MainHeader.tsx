@@ -7,9 +7,9 @@ import './MainHeader.scss';
 export const MainHeader = () => {
 
   return (
-    <header className="main-header">
-        <Link to="/"><Logo /></Link>
-        <Navbar>
+    <header className="main-header" aria-label='main-header'>
+        <Link aria-label='home-page' to="/"><Logo /></Link>
+        <Navbar navName="primary-navigation" >
             <Navbar.Item label='Home' to='/home'/>
             <Navbar.Item label='Dashboard' to='/dashboard'/>
             <Navbar.Item label='Bad Path' to='/bad_path'/>
