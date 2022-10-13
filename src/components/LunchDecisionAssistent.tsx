@@ -35,7 +35,7 @@ const distance: Record<DistanceTerms, string> = {
 
 const price: Record<PriceTerms, string> = {
   "1": "Ende des Monats",
-  "2": "Nicht zu viel",
+  "2": "nicht zu viel",
   "3": "Egal",
 };
 
