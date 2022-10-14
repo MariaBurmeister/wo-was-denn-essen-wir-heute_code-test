@@ -1,19 +1,16 @@
 import {useEffect, useState } from "react";
-import { useLocation, Location, useNavigate, useSearchParams, URLSearchParamsInit, NavigateOptions } from "react-router-dom";
+import {  useSearchParams, URLSearchParamsInit, NavigateOptions, useResolvedPath, useHref, useRoutes, useLocation } from "react-router-dom";
 
 interface DeepLinking<T> {
-    deepLink: Partial<Location>;
+    deepLink: string;
     searchParams: URLSearchParams;
     parsedSearchParams: T;
     setSearchParams: (nextInit?: T | URLSearchParamsInit | ((prev: URLSearchParams) => URLSearchParamsInit) | undefined, navigateOpts?: NavigateOptions | undefined) => void;
 }
 
-
-
-
 export const useDeepLink = ({initialSearchState} : {initialSearchState:any}): DeepLinking<typeof initialSearchState> => {
-  const location = useLocation();  
   const [searchParams, setSearchParams] = useSearchParams(initialSearchState);
+  const {href} = window.location;
 
   const [parsedSearchParams, setParsedSearchParams] = useState<typeof initialSearchState>(initialSearchState);
 
@@ -22,9 +19,7 @@ export const useDeepLink = ({initialSearchState} : {initialSearchState:any}): De
     }, []);
 
     useEffect(() => {
-        searchParams.sort();
         setParsedSearchParams(parseSearchParams(searchParams))
-        location.search = searchParams.toString();
     }, [searchParams]);
 
 
@@ -36,5 +31,5 @@ export const useDeepLink = ({initialSearchState} : {initialSearchState:any}): De
     return parsedSearchParams;
   };
 
-  return {deepLink: location, searchParams, parsedSearchParams, setSearchParams };
+  return {deepLink: href,searchParams, parsedSearchParams, setSearchParams };
 }
