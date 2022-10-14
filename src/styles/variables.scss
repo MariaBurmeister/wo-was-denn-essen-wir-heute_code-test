@@ -1,5 +1,9 @@
 $primary-color: rebeccapurple;
+$primary-color-medium: #D2B0F4;
+$primary-color-light: #E4D2F5;
 $secondary-color: deeppink;
+$secondary-color-medium: #FFA1D4;
+$secondary-color-light: #FCDDEC;
 
 $text-on-primary: white;
 $text-on-secondary: white;
@@ -274,6 +278,24 @@ font-size: x-small;
     padding: 1rem;
     border-radius: 4px;
     box-shadow: $shadow-card;
+
+    &.clickable {
+        cursor: pointer;
+    }
+    &.clickable:disabled  {
+        cursor: not-allowed;
+    }
+    &.clickable:hover,
+    &.clickable:focus,
+    &.clickable:focus-within {
+        background-color: $secondary-color-light;
+    }
+    &.clickable:active {
+        background-color: $secondary-color-medium;
+    }
+    &.clickable:checked {
+        background-color: $primary-color-light;
+    }
 } 
 
 %unstyled-list {
