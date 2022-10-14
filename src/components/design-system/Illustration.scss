@@ -4,8 +4,16 @@
     align-items: center;
 
     margin: 2rem;
+    max-width: 100%;
+
+    >img {
+        width: 100%;
+        height: auto;
+    }
+
 }
 
 .illustration-subtitle {
     margin-top: 2rem;
+    text-align: center;
 }
