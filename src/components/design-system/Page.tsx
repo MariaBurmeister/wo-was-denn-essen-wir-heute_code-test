@@ -5,8 +5,10 @@ export const Page: FunctionComponent<{
   title: string;
   children: ReactNode;
 }> = ({ title, children }) => {
+
+
   return (
-      <main className="page">
+      <main id="main" className="page">
         <header className="page_header">
             <h1>{title}</h1>
         </header>
