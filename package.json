@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.56",
@@ -28,10 +27,17 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "server:start": "node ./server/server.js",
     "db:seed": "node ./server/db/seed.js"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/*.d.{ts,tsx}",
+      "!**/node_modules/**"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +58,8 @@
     ]
   },
   "devDependencies": {
-    "@types/uuid": "^8.3.4"
+    "@testing-library/react": "^13.4.0",
+    "@types/uuid": "^8.3.4",
+    "jest": "^27.5.1"
   }
 }
