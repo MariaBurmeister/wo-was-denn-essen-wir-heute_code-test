@@ -1,4 +1,4 @@
-import { Children, cloneElement, DetailedHTMLProps, FunctionComponent, HTMLAttributes, ReactElement} from "react";
+import {DetailedHTMLProps, FunctionComponent, HTMLAttributes, ReactElement} from "react";
 
 
 import './Navbar.scss';

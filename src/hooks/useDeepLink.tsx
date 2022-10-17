@@ -1,5 +1,5 @@
 import {useEffect, useState } from "react";
-import {  useSearchParams, URLSearchParamsInit, NavigateOptions, useResolvedPath, useHref, useRoutes, useLocation } from "react-router-dom";
+import {  useSearchParams, URLSearchParamsInit, NavigateOptions } from "react-router-dom";
 
 interface DeepLinking<T> {
     deepLink: string;

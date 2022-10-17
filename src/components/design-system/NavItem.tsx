@@ -1,5 +1,5 @@
 import {FunctionComponent, ReactNode} from "react";
-import {  NavLink, NavLinkProps, useLocation } from "react-router-dom";
+import {  NavLink, NavLinkProps } from "react-router-dom";
 import './NavItem.scss';
 
 
