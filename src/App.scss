@@ -1,5 +1,9 @@
 @import './styles/variables.scss';
 
+.sr-only {
+  @extend %screen-reader-only;
+}
+
 .App {
   margin: 0;
   padding: 0;
@@ -79,8 +83,6 @@ fieldset {
     border: 1px solid $secondary-color;
   }
 }
-
-
 
 button {
   @extend %button-primary;
