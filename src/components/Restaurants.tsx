@@ -1,7 +1,7 @@
 import './Restaurants.scss';
 import { FunctionComponent } from "react";
 import { RestaurantResult } from "../hooks";
-import { Restaurant } from "./Restaurant";
+import { Restaurant, RestaurantLoader } from "./Restaurant";
 import { EmptyState, ErrorState } from './design-system';
 
 export const Restaurants: FunctionComponent<{
@@ -17,9 +17,9 @@ export const Restaurants: FunctionComponent<{
   <ol className="restaurant_list">
     {isLoading ?
     <>
-      <Restaurant key={1}   name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
-      <Restaurant key={2}   name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
-      <Restaurant key={3}   name='Loading...' distance='Loading...' price='Loading...' veggies='Loading...' category='Loading...' address='Loading...'/>
+      <RestaurantLoader key={1} />
+      <RestaurantLoader key={2} />
+      <RestaurantLoader key={3} />
     </>
     : isError ?
     <ErrorState message='Something went bad! Please try refreshing page.'/>
