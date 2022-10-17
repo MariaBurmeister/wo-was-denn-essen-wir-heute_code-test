@@ -14,7 +14,7 @@ export const Restaurants: FunctionComponent<{
   const isEmpty = status !== "ERROR" && restaurants.length === 0;
 
   return(
-  <ol className="restaurant_list">
+  <ol aria-label='restaurants' className="restaurant_list">
     {isLoading ?
     <>
       <RestaurantLoader key={1} />
