@@ -20,7 +20,7 @@ import { InputGroup, InputButton } from "./design-system";
     const [selected, setSelected] = useState<string>("Egal");
     const filters = sortCondition ? Object.entries(filterMap).sort(sortCondition) : Object.entries(filterMap);
 
-    useEffect(() => setSelected(filterMap[selectedValue]), [selectedValue]);
+    useEffect(() => setSelected(filterMap[selectedValue]), [filterMap, selectedValue]);
 
     return (
       <InputGroup groupName={filterName} disabled={disabled}>

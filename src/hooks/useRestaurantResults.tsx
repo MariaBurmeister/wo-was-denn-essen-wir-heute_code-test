@@ -93,7 +93,7 @@ export const useRestaurantResults = (randomize: boolean): RestaurantResult => {
       setStatus(status);
       setRestaurants(restaurants);
     });
-  }, [searchParams, randomize]);
+  }, [url, randomize]);
 
 
   return {status, restaurants : randomize ? shuffleArray(restaurants) : restaurants};
