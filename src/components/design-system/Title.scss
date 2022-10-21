@@ -9,9 +9,32 @@
     text-decoration: none;
 
     > .hash {
-        
-        padding-top: 0.7rem;
-        
+
+        &.h1{
+            padding-top: 0.1rem;
+            margin-left: 1rem;
+        }
+
+        &.h2{
+            padding-top: 0.7rem;
+            margin-left: 0;
+        }
+
+        &.h3{
+            padding-top: 0;
+            margin-left: 0.7rem;
+        }
+
+        &.h4{
+            padding-top: 0.1rem;
+            margin-left: 0.6rem;
+        }
+ 
+        &.h5{
+            padding-top: 0.05rem;
+            margin-left: 0.5rem;
+        }
+                
         color: $primary-color-medium;
         opacity: 0;
 
