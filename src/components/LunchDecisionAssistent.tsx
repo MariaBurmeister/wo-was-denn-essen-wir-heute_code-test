@@ -57,7 +57,7 @@ type MultiSelectTerms = CategoryTerms;
 
 export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
   const [randomize, setRandomize] = useState(false);
-  const { deepLink, parsedSearchParams, searchParams, setSearchParams } =
+  const { parsedSearchParams, searchParams, setSearchParams } =
     useDeepLink({ initialSearchState: initialFiltersState });
 
   const restaurantResults = useRestaurantResults(randomize);
@@ -158,8 +158,8 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
       </PageSection>
       <PageSection
         title="Results"
+        selfLink
         headerActions={
-          <>
             <InputButton
               type="checkbox"
               name="randomize"
