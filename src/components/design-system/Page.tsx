@@ -1,5 +1,6 @@
 import { FunctionComponent, ReactNode } from "react";
 import './Page.scss';
+import { Title } from "./Title";
 
 export const Page: FunctionComponent<{
   title: string;
@@ -10,7 +11,7 @@ export const Page: FunctionComponent<{
   return (
       <main id="main" className="page">
         <header className="page_header">
-            <h1>{title}</h1>
+            <Title variant="h1" title={title} titleLinkTo='main'/>
         </header>
           {children}
       </main>
