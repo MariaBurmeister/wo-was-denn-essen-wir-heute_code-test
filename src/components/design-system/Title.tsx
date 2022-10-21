@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from "react";
 import './Title.scss';
 
-type TitleTag = 'h1'| 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type TitleTag = 'h1'| 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 type SectionId = string;
 type TitleLink = SectionId | 'self' ;
@@ -23,8 +23,8 @@ export const Title: FunctionComponent<{ title: string; variant: TitleTag; titleL
   return (
     <>
       {hash ? 
-        <a className={`self-link ${variant}`} href={`#${hash}`}>
-        {TitleMap[variant]({children:title, id:linkToSelf ? hash : undefined})} <span className={`hash ${variant}`} aria-hidden>#</span> <span className="sr-only">Self-link</span>
+        <a className='self-link' aria-label={`Link to current section`} href={`#${hash}`}>
+        {TitleMap[variant]({children:title, id:linkToSelf ? hash : undefined})} <span className={`hash ${variant}`} aria-hidden>#</span>
         </a> : 
         TitleMap[variant]({children:title})}
     </>
