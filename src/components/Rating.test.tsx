@@ -31,11 +31,12 @@ describe("Rating", () => {
   describe("Rating - accessibility", () => {  
     
     it("emoji rating should be visible but not in the accessibility tree", () => {
-      expect(emojiRating).toBeVisible();
+      expect(emojiRating).toHaveAttribute('aria-hidden', 'true');
       expect(isInaccessible(emojiRating)).toBe(true);
     });
     
     it("text-aid should not be visible, but should be in the accessibility tree", () => {
+      expect(rating).toHaveClass('sr-only');
       expect(rating).not.toBeVisible();
       expect(isInaccessible(rating)).toBe(false);
     });
