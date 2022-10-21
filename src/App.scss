@@ -1,6 +1,9 @@
 @import './styles/variables.scss';
 
-.sr-only {
+
+// sr-only class is only accessible to screen readers, unless it has focus or is active.
+// this is to prevent visual users to loose track of focus when using keyboard navigation.
+.sr-only:not(:focus):not(:active) {
   @extend %screen-reader-only;
 }
 
