@@ -124,7 +124,11 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
 
   return (
     <>
-      <PageSection title="Filters">
+      <PageSection 
+      title="Filters" 
+      selfLink
+      headerActions={<Button onClick={onReset}>Reset</Button>}
+      >
         <MultiSelectFilter
           filterName="category"
           selectedValues={parsedSearchParams.category}
@@ -165,8 +169,6 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
             >
               {randomize ? "Restore Order" : "Randomize"}
             </InputButton>
-            <Button onClick={onReset}>Reset</Button>
-          </>
         }
       >
         <Restaurants results={restaurantResults} />

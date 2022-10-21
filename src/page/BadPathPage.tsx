@@ -9,7 +9,7 @@ export const BadPathPage: FunctionComponent = () => {
     const route = useLocation();
     return (
         <Page title='Inexistent Page'>
-            <PageSection title="Oops!" undertitle="Seems like you took a wrong turn:" xAlign="center" >
+            <PageSection title="Oops!" undertitle="Seems like you took a wrong turn:" horizontalAlign="center" >
                 <Illustration 
                 img='bad-path'
                 subtitle={<>The page <strong><code>{route.pathname}</code></strong> does not exist.</>}

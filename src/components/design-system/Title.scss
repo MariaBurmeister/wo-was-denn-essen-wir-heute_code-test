@@ -1,0 +1,27 @@
+@import '../../styles/variables';
+
+.self-link{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+
+    > .hash {
+        
+        padding-top: 0.7rem;
+        
+        color: $primary-color-medium;
+        opacity: 0;
+
+        transition: all 0.2s ease-in-out;
+    }
+
+    &:hover {
+        > .hash {
+            opacity: 100;
+        }
+    }
+
+}

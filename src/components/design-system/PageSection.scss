@@ -42,6 +42,7 @@
 
 .page_section-header-titles {
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
     align-items:center;
@@ -57,11 +58,6 @@
 
     &.right {
         align-items: flex-end;      
-    }
-
-    > h2 {
-        margin: 0;
-        padding: 0;
     }
     
     > aside {
