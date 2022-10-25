@@ -2,21 +2,18 @@
 
 .page_section{
     padding: 0 0.5rem 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+
     &.center {
-        display: flex;
-        flex-direction: column;
         align-items: center;
     }
 
     &.left {
-        display: flex;
-        flex-direction: column;
         align-items: flex-start;
     }
 
     &.right {
-        display: flex;
-        flex-direction: column;
         align-items: flex-end;
     }
 
@@ -36,37 +33,9 @@
 
     &.right {
         width: 100%;
+        flex-direction: row-reverse;
       
     }
-}
-
-.page_section-header-titles {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    padding: 0 0.5rem;
-
-    &.center {
-        align-items: center;
-    }
-
-    &.left {
-        align-items: flex-start;
-    }
-
-    &.right {
-        align-items: flex-end;      
-    }
-    
-    > aside {
-        @extend %help-text;
-        font-weight: 600;
-        margin: 0.3rem 0 0;
-        padding: 0;
-    }
-
 }
 
 .page_section-header-actions {
@@ -74,4 +43,21 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
+
+    &.center {
+        width: 100%;
+        // alternatively if buttons in line with title, then wrap below title, use: 
+        // flex-grow: 1;
+        justify-content: center;
+    }
+
+    &.right {
+        justify-content: flex-end;
+    }
+}
+
+.page_section-body {
+    margin: 0;
+    padding: 0.5rem;
+    width: 100%;
 }

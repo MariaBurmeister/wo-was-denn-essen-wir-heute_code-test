@@ -10,11 +10,8 @@ export const PageSection: FunctionComponent<{ title: string; undertitle?: string
     return (
       <section id={sectionId} className={`page_section${horizontalAlign ? ' ' + horizontalAlign : ''}`}>
         <header className={`page_section-header${horizontalAlign ? ' ' + horizontalAlign : ''}`}>
-          <div className={`page_section-header-titles${horizontalAlign ? ' ' + horizontalAlign : ''}`}>
-          <Title title={title} variant="h2" titleLinkTo={sectionId} />
-          {undertitle && <aside>{undertitle}</aside>}
-          </div>
-          <div className="page_section-header-actions">
+          <Title title={title} variant="h2" titleLinkTo={sectionId} undertitle={undertitle} horizontalAlign={horizontalAlign}/>
+          <div className={`page_section-header-actions${horizontalAlign ? ' ' + horizontalAlign : ''}`}>
           {headerActions}
           </div>
         </header>
