@@ -1,5 +1,9 @@
 @import './styles/variables.scss';
 
+*{
+    box-sizing: border-box;
+}
+
 
 // sr-only class is only accessible to screen readers, unless it has focus or is active.
 // this is to prevent visual users to loose track of focus when using keyboard navigation.
@@ -15,30 +19,38 @@
 
 }
 
-.body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
 h1 {
   @extend %h1;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 h2 {
   @extend %h2;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 h3 {
   @extend %h3;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 h4 {
   @extend %h4;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 h5 {
   @extend %h5;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+p {
+  margin-top: 0;
 }
 
 .h1 {
@@ -88,7 +100,14 @@ fieldset {
 }
 
 button {
-  @extend %button-primary;
+
+  &.primary{
+    @extend %button-primary;
+  }
+  &.secondary{
+    @extend %button-secondary;
+  }
+
 }
 
 .expanded-button{
@@ -107,5 +126,10 @@ button {
 }
 
 .input-as-button {
-  @extend %check-input-as-button;
+  &.primary{
+    @extend %check-input-as-button-primary;
+  }
+  &.secondary{
+    @extend %check-input-as-button-secondary;
+  }
 }

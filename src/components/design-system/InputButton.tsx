@@ -1,11 +1,12 @@
 import { FunctionComponent, InputHTMLAttributes, Key } from "react";
 interface InputButtonProps extends InputHTMLAttributes<HTMLInputElement> {
+  variant?: 'primary' | 'secondary';
   key?: Key;
 }
-export const InputButton: FunctionComponent<InputButtonProps> = ({type, children, checked, disabled, onChange, ...rest}) => {
+export const InputButton: FunctionComponent<InputButtonProps> = ({variant = "primary" ,type, children, checked, disabled, onChange, ...rest}) => {
     
     return( 
-          <label className={`input-as-button${checked ? ' label_checked' : ''}${disabled ? ' disabled' : ''}`} >
+          <label className={`input-as-button ${variant}${checked ? ' label_checked' : ''}${disabled ? ' disabled' : ''}`} >
             {children}
           <input 
           {...rest}
