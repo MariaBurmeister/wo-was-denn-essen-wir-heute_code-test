@@ -10,13 +10,16 @@ interface DeepLinking<T> {
 
 export const useDeepLink = ({initialSearchState} : {initialSearchState:any}): DeepLinking<typeof initialSearchState> => {
   const [searchParams, setSearchParams] = useSearchParams(initialSearchState);
-  const {href} = window.location;
+  const {href, search} = window.location;
 
   const [parsedSearchParams, setParsedSearchParams] = useState<typeof initialSearchState>(initialSearchState);
 
+console.log({search})
     useEffect(() => {
-        setSearchParams(searchParams);
-    }, []);
+        if(search === '') {
+            setSearchParams(initialSearchState)
+        }
+    }, [search]);
 
     useEffect(() => {
         setParsedSearchParams(parseSearchParams(searchParams))
@@ -31,5 +34,5 @@ export const useDeepLink = ({initialSearchState} : {initialSearchState:any}): De
     return parsedSearchParams;
   };
 
-  return {deepLink: href,searchParams, parsedSearchParams, setSearchParams };
+  return {deepLink: href, searchParams, parsedSearchParams, setSearchParams };
 }
