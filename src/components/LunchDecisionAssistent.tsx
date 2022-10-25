@@ -126,8 +126,9 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
     <>
       <PageSection 
       title="Filters" 
+      undertitle="Wähle deine Kriterien aus und finde das passende Restaurant für dich."
       selfLink
-      headerActions={<Button onClick={onReset}>Reset</Button>}
+      headerActions={<Button variant="secondary" onClick={onReset}>Reset</Button>}
       >
         <MultiSelectFilter
           filterName="category"
@@ -161,6 +162,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
         selfLink
         headerActions={
             <InputButton
+              variant="secondary" 
               type="checkbox"
               name="randomize"
               id="randomize"
