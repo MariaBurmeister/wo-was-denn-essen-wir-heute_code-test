@@ -14,7 +14,6 @@ export const useDeepLink = ({initialSearchState} : {initialSearchState:any}): De
 
   const [parsedSearchParams, setParsedSearchParams] = useState<typeof initialSearchState>(initialSearchState);
 
-console.log({search})
     useEffect(() => {
         if(search === '') {
             setSearchParams(initialSearchState)
