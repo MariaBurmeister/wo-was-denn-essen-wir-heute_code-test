@@ -12,7 +12,6 @@ export const MainHeader = () => {
         <Link aria-hidden aria-label='home-page' to="/"><Logo /></Link>
         <Navbar navName="primary-navigation" >
             <Navbar.Item label='Home' to='/home'/>
-            <Navbar.Item label='Dashboard' to='/dashboard'/>
             <Navbar.Item label='Bad Path' to='/bad_path'/>
         </Navbar>
     </header>
