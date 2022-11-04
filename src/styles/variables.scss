@@ -210,8 +210,21 @@ font-size: x-small;
 
 }
 
-%check-input-as-button-primary {
+%check-input-as-a-button-base {
     @extend %button-base;
+    max-width: 50vw;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+
+    >label {
+        text-overflow: ellipsis;
+    }
+}
+
+%check-input-as-button-primary {
+    @extend %check-input-as-a-button-base;
     
 
     border-color: $secondary-color;    
@@ -310,7 +323,7 @@ font-size: x-small;
 }
 
 %check-input-as-button-secondary {
-    @extend %button-base;
+    @extend %check-input-as-a-button-base;
     
 
     border-color: $secondary-color;    
