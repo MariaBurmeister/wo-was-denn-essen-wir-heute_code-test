@@ -4,6 +4,7 @@ import {
   useEffect,
   useState,
 } from "react";
+
 import { Restaurants } from "./Restaurants";
 import { MultiSelectFilter } from "./MultiSelectFilter";
 import { SingleSelectFilter } from "./SingleSelectFilter";
@@ -126,7 +127,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
     <>
       <PageSection 
       title="Filters" 
-      undertitle="Wähle deine Kriterien aus und finde das passende Restaurant für dich."
+      titleHelpText="Wähle deine Kriterien aus und finde das passende Restaurant für dich."
       selfLink
       headerActions={<Button variant="secondary" onClick={onReset}>Reset</Button>}
       >

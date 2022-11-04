@@ -5,11 +5,11 @@ import { Illustration } from "../components/design-system";
 
 
 
-export const BadPathPage: FunctionComponent = () => {
+const BadPathPage: FunctionComponent = () => {
     const route = useLocation();
     return (
         <Page title='Inexistent Page'>
-            <PageSection title="Oops!" undertitle="Seems like you took a wrong turn:" horizontalAlign="center" >
+            <PageSection title="Oops!" titleHelpText="Seems like you took a wrong turn:" horizontalAlign="center" >
                 <Illustration 
                 img='bad-path'
                 subtitle={<>The page <strong><code>{route.pathname}</code></strong> does not exist.</>}
@@ -18,3 +18,5 @@ export const BadPathPage: FunctionComponent = () => {
         </Page>
     );
 }
+
+export default BadPathPage;
