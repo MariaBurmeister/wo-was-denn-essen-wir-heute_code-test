@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import '../../../styles/variables';
 
 
 .title {
@@ -90,7 +90,7 @@
         transition: all 0.2s ease-in-out;
     }
 
-    &:hover {
+    &:hover,&:focus,&:active {
         > .hash {
             opacity: 100;
         }

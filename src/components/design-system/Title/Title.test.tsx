@@ -28,6 +28,13 @@ variants.forEach((variant) => {
                     expect(getByText('#')).toHaveAttribute('aria-hidden', 'true');
                 });
             });
+
+            describe('with help text', () => {
+                it('should render help text', () => {
+                    const { getByText } = render(<Title title={title} variant={variant} titleLinkTo='self' titleHelpText='Help Text' />);
+                    expect(getByText('Help Text')).toBeInTheDocument();
+                });
+            });
         });
 
         describe('with titleLinkTo a section', () => {
@@ -53,6 +60,14 @@ variants.forEach((variant) => {
                     expect(getByText('#')).toHaveAttribute('aria-hidden', 'true');
                 });
             });
+
+            describe('with help text', () => {
+                it('should render help text', () => {
+                    const { getByText } = render(<Title title={title} variant={variant} titleLinkTo='self' titleHelpText='Help Text' />);
+                    expect(getByText('Help Text')).toBeInTheDocument();
+                });
+            });
+
         });
 
         describe('without link', () => {
@@ -68,6 +83,13 @@ variants.forEach((variant) => {
                 const { queryByRole } = render(<Title title={title} variant={variant} />);
                 expect(queryByRole('link')).toBeNull();
                 expect(queryByRole('span')).toBeNull();
+            });
+
+            describe('with help text', () => {
+                it('should render help text', () => {
+                    const { getByText } = render(<Title title={title} variant={variant} titleLinkTo='self' titleHelpText='Help Text' />);
+                    expect(getByText('Help Text')).toBeInTheDocument();
+                });
             });
         });
     });

@@ -1,6 +1,6 @@
 import { FunctionComponent, ReactNode } from "react";
 import './Page.scss';
-import { Title } from "./Title";
+import { Title } from "../Title";
 
 export const Page: FunctionComponent<{
   title: string;

@@ -1,6 +1,6 @@
 import {isInaccessible, render } from '@testing-library/react';
 import { Illustration } from "./Illustration";
-import { Illustrations } from "../../assets/illustrations";
+import { Illustrations } from "../../../assets/illustrations";
 
 
 

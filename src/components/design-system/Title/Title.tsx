@@ -12,11 +12,11 @@ interface TitleProps {
   title: string; 
   variant: TitleTag; 
   titleLinkTo?: TitleLink; 
-  undertitle?: string | ReactNode; 
+  titleHelpText?: string | ReactNode; 
   horizontalAlign?: HorizontalAlign;
 }
 
-export const Title: FunctionComponent<TitleProps> = ({ title, variant, titleLinkTo, undertitle, horizontalAlign = 'left' }) => {
+export const Title: FunctionComponent<TitleProps> = ({ title, variant, titleLinkTo, titleHelpText, horizontalAlign = 'left' }) => {
   const linkToSelf = titleLinkTo === 'self';
   const hash = linkToSelf ? title.toLowerCase().replace(/ /g, '-') : titleLinkTo;
 
@@ -28,11 +28,11 @@ export const Title: FunctionComponent<TitleProps> = ({ title, variant, titleLink
         <a className={`self-link${horizontalAlign ? ' ' + horizontalAlign : ''}`} aria-label={`Link to current section`} href={`#${hash}`}>
           {TitleMap[variant]({children:title, id:linkToSelf ? hash : undefined})} <span className={`hash ${variant}`} aria-hidden>#</span>
         </a> 
-        {undertitle && <aside>{undertitle}</aside>}
+        {titleHelpText && <aside>{titleHelpText}</aside>}
       </div> :
       <div className={`title${horizontalAlign ? ' ' + horizontalAlign : ''}`}>
         {TitleMap[variant]({children:title})}
-        <>{undertitle && <aside>{undertitle}</aside>}</>
+        <>{titleHelpText && <aside>{titleHelpText}</aside>}</>
       </div>
       }
     </>

@@ -2,7 +2,7 @@ import { FunctionComponent, ImgHTMLAttributes, ReactNode } from "react";
 
 import './Illustration.scss';
 
-import  {Illustrations} from '../../assets/illustrations';
+import  {Illustrations} from '../../../assets/illustrations';
 
 type ImageName  = keyof typeof Illustrations;
 
