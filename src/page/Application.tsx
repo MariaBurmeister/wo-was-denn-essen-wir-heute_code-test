@@ -1,14 +1,15 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { MainHeader } from "../components/design-system";
+import { MainHeader, PageLoader } from "../components/design-system";
 
 export const Application: FunctionComponent = () => {
   return (
     <>
       <MainHeader />
-      <Outlet />
+      <Suspense fallback={<PageLoader/>}>
+        <Outlet />
+      </Suspense>
     {/* <Footer/> */}
-
     </>
   );
 }

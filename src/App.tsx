@@ -1,6 +1,10 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
-import { Application, BadPathPage, Home } from './page';
+import { Application } from './page';
+
+const Home = lazy(() => import('./page/Home'));
+const BadPathPage = lazy(() => import('./page/BadPathPage'));
 
 function App() {
   return (
