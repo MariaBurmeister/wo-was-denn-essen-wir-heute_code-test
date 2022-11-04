@@ -11,16 +11,15 @@ export const Restaurants: FunctionComponent<{
   const {status, restaurants} = results;
   const isLoading = status === "LOADING";
   const isError = status === "ERROR";
-  const isEmpty = status !== "ERROR" && restaurants.length === 0;
+  const isEmpty = status === "READY" && restaurants.length === 0;
+
+  // prevents layout flickering on loading state:
+  const loaderCount = restaurants.length === 0 ? 3 : restaurants.length;
 
   return(
   <ol aria-label='restaurants' className="restaurant_list">
     {isLoading ?
-    <>
-      <RestaurantLoader key={1} />
-      <RestaurantLoader key={2} />
-      <RestaurantLoader key={3} />
-    </>
+    <RestaurantsLoader count={loaderCount}/> 
     : isError ?
     <ErrorState message='Something went bad! Please try refreshing page.'/>
     : isEmpty ?
@@ -32,3 +31,11 @@ export const Restaurants: FunctionComponent<{
   )
   ;}
 ;
+
+const RestaurantsLoader: FunctionComponent<{count : number}> = ({count}) => {
+  return(
+    <>
+      {Array(count).fill(0).map((_, i) => <RestaurantLoader key={i}/>)}
+    </>
+  )
+};
