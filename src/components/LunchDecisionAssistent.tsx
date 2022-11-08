@@ -58,8 +58,8 @@ type MultiSelectTerms = CategoryTerms;
 
 export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
   const [randomize, setRandomize] = useState(false);
-  const { parsedSearchParams, searchParams, setSearchParams } =
-    useDeepLink({ initialSearchState: initialFiltersState });
+  const { getSingleSelectValue, getMultiSelectValues, setSingleSelectValue, setMultiSelectValues, setSearchParams } =
+    useDeepLink(initialFiltersState);
 
   const restaurantResults = useRestaurantResults(randomize);
 
@@ -79,48 +79,13 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
   const onChangeMultiselect: ChangeEventHandler<HTMLInputElement> = (e) => {
     const filterName = e.target.name as MultiSelectFilters;
     const newValue = e.target.value as MultiSelectTerms;
-
-    if (newValue === "all") {
-      return setSearchParams((prev: URLSearchParams) => {
-        prev.set(filterName, "all");
-        return prev;
-      });
-    }
-
-    
-    let selectedValues = searchParams.getAll(filterName);
-    setSearchParams((prev: URLSearchParams) => {
-      prev.delete(filterName);
-
-      if (selectedValues.includes(newValue)) {
-        const updatedSelectedValues = selectedValues
-          .filter((value) => value !== newValue);
-
-
-        if (updatedSelectedValues.length > 0) {
-          updatedSelectedValues.forEach((value) => prev.append(filterName, value));
-        }
-        
-      } else {
-
-        if (selectedValues.includes("all")) {
-          selectedValues = selectedValues.filter((value) => value !== "all");
-        }
-
-        [...selectedValues, newValue].forEach((value) => prev.append(filterName, value));
-
-      }
-      return prev;
-    });
+    setMultiSelectValues(filterName, newValue, "all");
   };
 
   const onChangeSingleSelect: ChangeEventHandler<HTMLInputElement> = (e) => {
     const filterName = e.target.name;
     const newValue = e.target.value;
-    setSearchParams((prev: URLSearchParams) => {
-      prev.set(filterName, newValue);
-      return prev;
-    });
+    setSingleSelectValue(filterName, newValue);
   };
 
   return (
@@ -133,27 +98,27 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
       >
         <MultiSelectFilter
           filterName="category"
-          selectedValues={parsedSearchParams.category}
+          selectedValues={getMultiSelectValues("category")}
           filterMap={category}
           onChange={onChangeMultiselect}
         />
         <SingleSelectFilter
           filterName="distance"
-          selectedValue={parsedSearchParams.distance}
+          selectedValue={getSingleSelectValue("distance")}
           filterMap={distance}
           onChange={onChangeSingleSelect}
           sortCondition={([termA], [termB]) => Number(termB) - Number(termA)}
         />
         <SingleSelectFilter
           filterName="price"
-          selectedValue={parsedSearchParams.price}
+          selectedValue={getSingleSelectValue("price")}
           filterMap={price}
           onChange={onChangeSingleSelect}
           sortCondition={([termA], [termB]) => Number(termB) - Number(termA)}
         />
         <SingleSelectFilter
           filterName="veggies"
-          selectedValue={parsedSearchParams.veggies}
+          selectedValue={getSingleSelectValue("veggies")}
           filterMap={veggies}
           onChange={onChangeSingleSelect}
         />

@@ -1,18 +1,21 @@
 import {useEffect, useState } from "react";
 import {  useSearchParams, URLSearchParamsInit, NavigateOptions } from "react-router-dom";
 
-interface DeepLinking<T> {
+type InitialFiltersState = Record<string, string|string[]>;
+interface DeepLinking<InitialFiltersState> {
     deepLink: string;
     searchParams: URLSearchParams;
-    parsedSearchParams: T;
-    setSearchParams: (nextInit?: T | URLSearchParamsInit | ((prev: URLSearchParams) => URLSearchParamsInit) | undefined, navigateOpts?: NavigateOptions | undefined) => void;
+    getSingleSelectValue: (key: keyof InitialFiltersState) => string;
+    setSingleSelectValue: (key: keyof InitialFiltersState, value: string) => void;
+    getMultiSelectValues: (key: keyof InitialFiltersState) => string[];
+    setMultiSelectValues: (key: keyof InitialFiltersState, toggledValue: string, resetterValue?: string) => void;
+    setSearchParams: (nextInit?: URLSearchParamsInit | ((prev: URLSearchParams) => URLSearchParamsInit) | undefined, navigateOpts?: NavigateOptions | undefined) => void;
 }
 
-export const useDeepLink = ({initialSearchState} : {initialSearchState:any}): DeepLinking<typeof initialSearchState> => {
+
+export function useDeepLink(initialSearchState: InitialFiltersState): DeepLinking<InitialFiltersState> {
   const [searchParams, setSearchParams] = useSearchParams(initialSearchState);
   const {href, search} = window.location;
-
-  const [parsedSearchParams, setParsedSearchParams] = useState<typeof initialSearchState>(initialSearchState);
 
     useEffect(() => {
         if(search === '') {
@@ -20,18 +23,59 @@ export const useDeepLink = ({initialSearchState} : {initialSearchState:any}): De
         }
     }, [search]);
 
-    useEffect(() => {
-        setParsedSearchParams(parseSearchParams(searchParams))
-    }, [searchParams]);
+    const getSingleSelectValue = (key: keyof typeof initialSearchState): string => {
+        const value =  searchParams.get(key);
+        if(value) {
+            return value;
+        }
+        throw new Error(`No value found for key ${key}`);
+    };
 
+    const getMultiSelectValues = (key: keyof typeof initialSearchState): string[] => {
+        return searchParams.getAll(key);
+    };
 
-    const parseSearchParams = (searchParams: URLSearchParams) => {
-        const parsedSearchParams: typeof initialSearchState = {};
-        searchParams.forEach((_, key) => {
-            parsedSearchParams[key] = typeof initialSearchState[key] === 'object' ? searchParams.getAll(key) : searchParams.get(key);
-        });
-    return parsedSearchParams;
-  };
+    const setSingleSelectValue = (key: keyof typeof initialSearchState, value: string) => {
+        setSearchParams((prev: URLSearchParams) => {
+            prev.set(key, value);
+            return prev;
+          });
+    };
 
-  return {deepLink: href, searchParams, parsedSearchParams, setSearchParams };
+    const setMultiSelectValues = (key: keyof typeof initialSearchState, toggledValue: string, resetterValue?: keyof typeof initialSearchState) => {
+        if (resetterValue && toggledValue === resetterValue) {
+            return setSearchParams((prev: URLSearchParams) => {
+              prev.set(key, resetterValue);
+              return prev;
+            });
+          }
+      
+          
+          let selectedValues = searchParams.getAll(key);
+          setSearchParams((prev: URLSearchParams) => {
+            prev.delete(key);
+      
+            if (selectedValues.includes(toggledValue)) {
+              const updatedSelectedValues = selectedValues
+                .filter((value) => value !== toggledValue);
+      
+      
+              if (updatedSelectedValues.length > 0) {
+                updatedSelectedValues.forEach((value) => prev.append(key, value));
+              }
+              
+            } else {
+      
+              if (resetterValue && selectedValues.includes(resetterValue)) {
+                selectedValues = selectedValues.filter((value) => value !== "all");
+              }
+      
+              [...selectedValues, toggledValue].forEach((value) => prev.append(key, value));
+      
+            }
+            return prev;
+          });
+    };
+
+  return {deepLink: href, searchParams, setSearchParams, getSingleSelectValue, getMultiSelectValues, setSingleSelectValue, setMultiSelectValues};
 }

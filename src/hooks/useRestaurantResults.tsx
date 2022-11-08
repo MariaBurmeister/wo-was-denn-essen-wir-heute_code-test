@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { shuffleArray } from "../utils";
 
-export interface FiltersState {
+export interface FiltersState extends Record<string, string | string[]> {
   category: CategoryTerms[];
   distance: DistanceTerms;
   price: PriceTerms;
@@ -57,7 +57,7 @@ type Rating = '1' | '2' | '3';
 
 export type Status = "LOADING" | "READY" | "ERROR";
 
-const getResults = (url: string): Promise<{status: Status; restaurants:Restaurant[]}> => {
+const getResults =  async (url: string): Promise<{status: Status; restaurants:Restaurant[]}> => {
   return axios.get(url)
     .then(({ data }) => {
       return {
