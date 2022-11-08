@@ -3,7 +3,7 @@
 
 
 ## Run the project:
-To run the project locally follow the following steps in your terminal:
+To run the project locally, follow these steps in your terminal:
 - ```npm install```
 - ```npm run db:seed``` to populate the sqlite database.
 - ```npm run server:start``` to serve the "backend".
