@@ -16,10 +16,10 @@ $shadow-button: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4
 $shadow-button-hover: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 $shadow-button-active: $shadow-button;
 
-$shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;;
-
+$shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
 %button-base {
+
     margin: 1rem 0.5rem;
     padding: 0.5rem 1rem;
 
@@ -36,21 +36,18 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
 
     outline: solid 0px;
 
-    &:hover {        
-        outline: solid 3px;
-        
-        box-shadow: $shadow-button-hover;
-    }
-
-    &:focus {        
-        outline: solid 3px;
+    &:hover,
+    &:focus  {        
+        outline: solid 5px;
+        outline-offset: -2px;
         
         box-shadow: $shadow-button-hover;
     }
 
     &:active {
-        outline: solid 3px;
-        
+        outline: solid 5px;
+        outline-offset: -2px;
+
         box-shadow: $shadow-button-active;
     }
 
@@ -77,16 +74,11 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
 
     transition: all 0.3s ease-in-out;
 
-    &:hover {        
-
-        border-color: $secondary-color;
-
-    }
-
+    &:hover,
     &:focus {        
 
         border-color: $secondary-color;
-        
+
     }
 
     &:active {
@@ -111,30 +103,30 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
 }
   
 %h2 {
-color: $primary-color;
-font-size: x-large;
-font-weight: 600;
-padding: 0.5rem;
+    color: $primary-color;
+    font-size: x-large;
+    font-weight: 600;
+    padding: 0.5rem;
 }
 
 %h3 {
-color: $primary-color;
-font-size: large;
+    color: $primary-color;
+    font-size: large;
 }
 
 %h4 {
-color: $primary-color;
-font-size: medium;
+    color: $primary-color;
+    font-size: medium;
 }
 
 %h5 {
-color: $primary-color;
-font-size: small;
+    color: $primary-color;
+    font-size: small;
 }
 
 %help-text {
-color: $primary-color;
-font-size: x-small;
+    color: $primary-color;
+    font-size: x-small;
 }
 
 %button-primary {
@@ -217,9 +209,30 @@ font-size: x-small;
     overflow: hidden;
     text-overflow: ellipsis;
 
-
+    
+    
     >label {
         text-overflow: ellipsis;
+            border-radius: $border-radius-sm;
+
+    }
+
+    &:focus-within {        
+        outline-style:solid;
+        outline-width: 5px;
+        outline-offset: -2px;
+        
+    }
+
+    &.label_checked {
+
+        &:focus-within {        
+            outline-style:solid;
+            outline-width: 5px;
+            outline-offset: -2px;
+
+            
+        }
     }
 }
 
@@ -239,13 +252,13 @@ font-size: x-small;
     &:hover {        
         color: $primary-color;
 
-        outline: $secondary-color solid 3px;
+        outline-color: $secondary-color;
         
         box-shadow: $shadow-button-hover;
     }
 
     &:focus-within {        
-        outline: $secondary-color solid 3px;
+        outline-color: $secondary-color;
         
         box-shadow: $shadow-button-hover;
     }
@@ -256,7 +269,7 @@ font-size: x-small;
         
         color: $text-on-primary;
 
-        outline: $primary-color solid 3px;
+        outline-color: $primary-color;
         
         box-shadow: $shadow-button-active;
     }
@@ -272,14 +285,14 @@ font-size: x-small;
         &:hover {
             color: $secondary-color;
 
-            outline: $primary-color solid 3px;
+            outline-color: $primary-color;
 
             box-shadow: $shadow-button-hover;
         }
         &:focus-within {
             color: $text-on-primary;
             
-            outline: $primary-color solid 3px;
+            outline-color: $primary-color;
             
             box-shadow: $shadow-button-hover;
 
@@ -294,7 +307,7 @@ font-size: x-small;
             
             color: $text-on-secondary;
             
-            outline: $secondary-color solid 3px;
+            outline-color: $secondary-color;
             
             box-shadow: $shadow-button-active;
         }
@@ -339,13 +352,13 @@ font-size: x-small;
         color: $secondary-color;
         background-color: $secondary-color-light;
 
-        outline: $secondary-color solid 3px;
+        outline-color: $secondary-color;
         
         box-shadow: $shadow-button-hover;
     }
 
     &:focus-within {        
-        outline: $secondary-color solid 3px;
+        outline-color: $secondary-color;
         background-color: $secondary-color-light;
         
         box-shadow: $shadow-button-hover;
@@ -357,7 +370,7 @@ font-size: x-small;
         
         color: $primary-color;
 
-        outline: $primary-color solid 3px;
+        outline-color: $primary-color;
         
         box-shadow: $shadow-button-active;
     }
@@ -374,7 +387,7 @@ font-size: x-small;
             color: $primary-color;
             background-color: $primary-color-medium;
 
-            outline: $primary-color solid 3px;
+            outline-color: $primary-color;
 
             box-shadow: $shadow-button-hover;
         }
@@ -382,7 +395,7 @@ font-size: x-small;
         &:focus-within {
             color: $primary-color;
             
-            outline: $primary-color solid 3px;
+            outline-color: $primary-color;
             
             box-shadow: $shadow-button-hover;
 
@@ -394,7 +407,7 @@ font-size: x-small;
             
             color: $secondary-color;
             
-            outline: $secondary-color solid 3px;
+            outline-color: $secondary-color;
             
             box-shadow: $shadow-button-active;
         }
