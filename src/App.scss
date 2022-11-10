@@ -7,16 +7,23 @@
 
 // sr-only class is only accessible to screen readers, unless it has focus or is active.
 // this is to prevent visual users to loose track of focus when using keyboard navigation.
+
 .sr-only:not(:focus):not(:active) {
   @extend %screen-reader-only;
 }
 
-.App {
+#root{
   margin: 0;
   padding: 0;
   width: 100%;
   scroll-behavior: smooth;
 
+  display: grid;
+
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+
+  height: 98vh;
 }
 
 h1 {
