@@ -1,4 +1,11 @@
 .page {
     padding: 0.5rem ;
+
+    display: grid;
+
+    overflow: scroll;
+
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
 }
 
