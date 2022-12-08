@@ -21,7 +21,7 @@ export const Restaurants: FunctionComponent<{
     {isLoading ?
     <RestaurantsLoader count={loaderCount}/> 
     : isError ?
-    <ErrorState message='Something went bad! Please try refreshing page.'/>
+    <ErrorState message='Something went wrong! Please try refreshing page.'/>
     : isEmpty ?
     <EmptyState message="No results seem to match the filtered criteria at the moment."/>
     : restaurants.map((result) => (

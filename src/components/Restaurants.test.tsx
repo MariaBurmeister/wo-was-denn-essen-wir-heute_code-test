@@ -1,4 +1,4 @@
-import {findByAltText, isInaccessible, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Restaurants } from "./Restaurants";
 import {RestaurantResult} from '../hooks';
 
@@ -67,7 +67,7 @@ describe("Restaurants", () => {
         beforeAll(async() => {
             const {findByLabelText, findByText} = render(<Restaurants results={mockResultError}/>);
             results = await findByLabelText('restaurants');
-            error = await findByText('Something went bad! Please try refreshing page.');
+            error = await findByText('Something went wrong! Please try refreshing page.');
         });
         
         it("should show the error state", async() => {
