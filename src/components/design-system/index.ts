@@ -8,4 +8,4 @@ export { MainHeader } from "./MainHeader";
 export { Navbar } from "./Navbar";
 export { Page, PageLoader } from "./Page";
 export { PageSection } from "./PageSection";
-export { Tooltip } from "./Tooltip";
+export { Skeleton } from "./Skeleton";

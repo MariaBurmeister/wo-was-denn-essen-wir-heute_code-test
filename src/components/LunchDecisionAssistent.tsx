@@ -18,6 +18,8 @@ import {
   PriceTerms,
   VeggiesTerms,
 } from "../hooks";
+import { Skeleton } from "./design-system/Skeleton";
+import { TitleLoader } from "./design-system/Title";
 
 const category: Record<CategoryTerms, string> = {
   all: "Alles",
@@ -94,6 +96,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
       title="Filters" 
       titleHelpText="Wähle deine Kriterien aus und finde das passende Restaurant für dich."
       selfLink
+      variant="primary"
       headerActions={<Button variant="secondary" onClick={onReset}>Reset</Button>}
       >
         <MultiSelectFilter
@@ -126,6 +129,7 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
       <PageSection
         title="Results"
         selfLink
+        variant="secondary"
         headerActions={
             <InputButton
               variant="secondary" 

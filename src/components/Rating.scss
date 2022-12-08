@@ -1,4 +1,16 @@
 .rating{
     margin: 0 0.5rem;
 
+    > .rating-loaders {
+        width: min-content;
+        margin:  0 auto 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 0.5rem;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+    }
+
 }

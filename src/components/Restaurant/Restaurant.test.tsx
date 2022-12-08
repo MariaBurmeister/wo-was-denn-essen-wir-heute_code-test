@@ -1,5 +1,6 @@
 import {isInaccessible, render } from '@testing-library/react';
-import { Restaurant, RestaurantLoader } from './Restaurant';
+import { Restaurant } from './Restaurant';
+import { RestaurantLoader } from './RestaurantLoader';
 
 describe('Restaurant', () => {
     

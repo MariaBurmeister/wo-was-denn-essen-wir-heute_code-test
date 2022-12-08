@@ -3,16 +3,30 @@
 .nav-item {
     @extend %unstyled-list-item;
     color: $primary-color;
+
+
+  
     
     > .nav-link {
         @extend %nav-link;
         @extend %unstyled-link;
         text-decoration: none;
 
+        display: inline-block;
+        margin: 0 0.5rem;
+        padding: 0.5rem 1rem;
+        line-height: 1rem;
+
+        max-width: 50vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        // white-space: nowrap;
+
+        border-color: transparent;
+
+
         &.active {
-        
             border-color: $secondary-color;
-            
         }
     }
 

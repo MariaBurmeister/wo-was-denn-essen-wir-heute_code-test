@@ -1,9 +1,30 @@
 @import '../../styles/variables';
 
 .page_section{
-    padding: 0 0.5rem 0 0.5rem;
+    position: sticky;
+    top: 5rem;
+
+    max-height:  calc(100vh - 5rem);
+
     display: flex;
     flex-direction: column;
+    
+    border-radius: 4.5rem 4.5rem 0 0;
+    padding: 2.5rem 1rem 3rem 1rem;
+
+    &.primary {
+        background-color: $primary-color-light;
+        color: white;
+    }
+        
+    &.secondary {
+        background-color: $secondary-color-medium;
+        color: white;
+    }
+
+    &.white {
+        background-color: white;
+    }
 
     &.center {
         align-items: center;
@@ -16,11 +37,17 @@
     &.right {
         align-items: flex-end;
     }
+ 
+    &:only-of-type {
+        margin: 0;
+        padding-bottom: 0;
+    }
 
 }
 
 .page_section-header {
-    min-height: 4.5rem;
+    background-color: inherit;
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -36,6 +63,7 @@
         flex-direction: row-reverse;
       
     }
+
 }
 
 .page_section-header-actions {
@@ -46,8 +74,6 @@
 
     &.center {
         width: 100%;
-        // alternatively if buttons in line with title, then wrap below title, use: 
-        // flex-grow: 1;
         justify-content: center;
     }
 
@@ -56,8 +82,9 @@
     }
 }
 
-.page_section-body {
-    margin: 0;
-    padding: 0.5rem;
+.page_section-content {
     width: 100%;
+    // max-height: calc(100vh - 12rem);
+
+    overflow: auto;
 }

@@ -1,17 +1,17 @@
-@import '../styles/variables.scss';
+@import '../../styles/variables.scss';
 
 .restaurant_item {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 1rem;
 
-    align-items: stretch;
+    align-items: center;
     text-align: center;
   
     
     @extend %primary-card;
 
-    background-color: white;
+    background-color: $secondary-color-light;
 
     @media screen and (max-width: 340px) {
         grid-template-columns: 1fr;
@@ -25,6 +25,10 @@
     justify-content: space-between;
     height: 100%;
 
+    >h3 {
+        color: $secondary-color;        
+    }
+
 }
 
 .restaurant_ratings {
@@ -36,4 +40,5 @@
     align-items: flex-start;
     
     margin: 0.5rem;
+
 }

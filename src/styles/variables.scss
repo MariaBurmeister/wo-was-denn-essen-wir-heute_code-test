@@ -1,9 +1,12 @@
+
 $primary-color: rebeccapurple;
 $primary-color-medium: #D2B0F4;
 $primary-color-light: #E4D2F5;
 $secondary-color: deeppink;
 $secondary-color-medium: #FFA1D4;
 $secondary-color-light: #FCDDEC;
+
+$fantasy-font: 'Fascinate Inline', cursive;
 
 $text-on-primary: white;
 $text-on-secondary: white;
@@ -98,8 +101,21 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
 
 
 %h1 {
-    color: $primary-color;
+    color: $primary-color-medium;
     font-size: xx-large;
+
+    &.highlight {    
+        font-family: $fantasy-font;    
+        @media screen and (min-width: 375px) {
+            font-size: 3rem;
+        }
+        @media screen and (min-width: 650px) {
+            font-size: 4rem;
+        }
+        @media screen and (min-width: 810px) {
+            font-size: 4.5rem;
+        }
+    }
 }
   
 %h2 {
@@ -438,8 +454,8 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
 
 %primary-card {
     margin: 1rem 0;
-    padding: 1rem;
-    border-radius: 4px;
+    padding: 1.5rem;
+    border-radius: $border-radius-lg;
     box-shadow: $shadow-card;
 
     &.clickable {

@@ -4,8 +4,6 @@
 .title {
     display: flex;
     flex-grow: 1;
-    // flex-basis: content;
-    // flex-shrink: 5;
     flex-direction: column;
     justify-content: center;
     align-items:center;
@@ -15,6 +13,7 @@
 
     &.center {
         align-items: center;  
+        text-align: center;
         >aside {
             text-align: center;
         }
@@ -26,12 +25,14 @@
 
     &.right {
         align-items: flex-end;  
+        text-align: right;
+
         >aside {
             text-align: right;
         }    
     }
     
-    > aside {
+    > .help-text {
         @extend %help-text;
 
         font-weight: 600;
@@ -41,6 +42,8 @@
 
     > h1,h2,h3,h4,h5,h6 {
         margin: 0;
+        font-family: $fantasy-font;
+
     }
 
 }
@@ -98,6 +101,7 @@
 
     > h1,h2,h3,h4,h5,h6 {
         margin: 0;
+        font-family: $fantasy-font;
 
     }
 

@@ -1,19 +1,22 @@
 import { FunctionComponent, ReactNode } from "react";
-import './Page.scss';
 import { Title } from "../Title";
+import './Page.scss';
 
 export const Page: FunctionComponent<{
   title: string;
   children: ReactNode;
-}> = ({ title, children }) => {
-
+  titleAlign?: 'center' | 'left' | 'right';
+  variant?: 'primary' | 'secondary' | 'white';
+}> = ({ title, children, titleAlign='center', variant='primary' }) => {
 
   return (
-      <main id="main" className="page">
+      <main id="main" className={`page ${variant}`}>
         <header className="page_header">
-            <Title variant="h1" title={title} titleLinkTo='main'/>
+            <Title semanticTag="h1" highlight title={title} titleLinkTo='main' horizontalAlign={titleAlign}/>
         </header>
+        <div className="page_content">
           {children}
+        </div>
       </main>
   );
 };
