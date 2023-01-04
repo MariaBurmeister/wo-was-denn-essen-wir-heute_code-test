@@ -3,23 +3,22 @@
 .page_section{
     position: sticky;
     top: 5rem;
-
+    
+    flex-grow: 1;
     max-height:  calc(100vh - 5rem);
 
     display: flex;
     flex-direction: column;
-    
+
     border-radius: 4.5rem 4.5rem 0 0;
     padding: 2.5rem 1rem 3rem 1rem;
 
     &.primary {
         background-color: $primary-color-light;
-        color: white;
     }
         
     &.secondary {
         background-color: $secondary-color-medium;
-        color: white;
     }
 
     &.white {
@@ -42,6 +41,16 @@
         margin: 0;
         padding-bottom: 0;
     }
+
+    &:last-of-type{
+
+        &.chrome  {
+            max-height: unset;
+        }
+    }   
+
+
+
 
 }
 
@@ -84,7 +93,7 @@
 
 .page_section-content {
     width: 100%;
-    // max-height: calc(100vh - 12rem);
-
+    
+    border-radius: $border-radius-md;
     overflow: auto;
 }
