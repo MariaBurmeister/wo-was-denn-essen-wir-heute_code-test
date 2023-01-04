@@ -44,7 +44,7 @@
 
     &:last-of-type{
 
-        &.chrome  {
+        &.chrome, &.safari {
             max-height: unset;
         }
     }   
