@@ -12,6 +12,8 @@
     @extend %primary-card;
 
     background-color: $secondary-color-light;
+    border: 1px solid $secondary-color;
+
 
     @media screen and (max-width: 340px) {
         grid-template-columns: 1fr;

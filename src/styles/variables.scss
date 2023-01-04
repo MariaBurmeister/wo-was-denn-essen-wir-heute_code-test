@@ -11,6 +11,10 @@ $fantasy-font: 'Fascinate Inline', cursive;
 $text-on-primary: white;
 $text-on-secondary: white;
 
+$text-on-primary-light: white;
+$text-on-secondary-light: $secondary-color-medium;
+
+
 $border-radius-sm: 0.3rem;
 $border-radius-md: 0.5rem;
 $border-radius-lg: 1rem;
@@ -26,20 +30,25 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
     margin: 1rem 0.5rem;
     padding: 0.5rem 1rem;
 
-    border: 1px solid;
     border-radius: $border-radius-sm;
+    border-width: 0;
 
+    
     box-shadow: $shadow-button;
-
+    
     cursor: pointer;
     font-size: medium;
     font-weight: 600;
-
+    
     transition: all 0.3s ease-in-out;
+    
+    outline: solid;
+    outline-width: 0;
 
-    outline: solid 0px;
+    &:hover {
+        box-shadow: $shadow-button-hover;
+    }
 
-    &:hover,
     &:focus  {        
         outline: solid 5px;
         outline-offset: -2px;
@@ -48,16 +57,12 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
     }
 
     &:active {
-        outline: solid 5px;
-        outline-offset: -2px;
-
         box-shadow: $shadow-button-active;
     }
 
     &:disabled {
       cursor: not-allowed;
       outline: none;
-      border: none;
       box-shadow: none;
     }
 }
@@ -149,29 +154,28 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
 
     @extend %button-base;
 
+    background-color: $primary-color-light;
 
-    border-color:$secondary-color;
-    background-color: $secondary-color;
+    outline-width: 0;
+    border-width: 0;
     
-    color: $text-on-secondary;
+    color: $primary-color;
 
     &:hover {        
-        color: $primary-color;
-
-        outline-color: $secondary-color;
+        background-color: $primary-color-light;
     }
 
     &:focus {        
-        outline-color: $secondary-color;
+        background-color: $primary-color-light;
+        outline-color: $primary-color-light;
     }
 
     &:active {
         border-color: $primary-color;
-        background-color: $primary-color;
+        background-color: $primary-color-medium;
+        outline-color: $primary-color-medium;
 
         color: $text-on-primary;
-
-        outline-color: $primary-color;
     }
 
     &:disabled {
@@ -185,29 +189,29 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
 
     @extend %button-base;
 
+    background-color: $secondary-color-light;
 
-    border-color:$secondary-color;
-    background-color: white;
+    outline-width: 0;
+    border-width: 0;
     
     color: $secondary-color;
 
     &:hover {        
         background-color: $secondary-color-light;
-
-        outline-color: $secondary-color;
     }
 
     &:focus {        
-        outline-color: $secondary-color;
+        background-color: $secondary-color-light;
+        outline-color: $secondary-color-light;
     }
 
     &:active {
         border-color: $secondary-color;
         background-color: $secondary-color-medium;
+        outline-color: $secondary-color-medium;
 
-        color: $secondary-color;
 
-        outline-color: $secondary-color;
+        color: $text-on-secondary;
     }
 
     &:disabled {
@@ -458,6 +462,11 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
     border-radius: $border-radius-lg;
     box-shadow: $shadow-card;
 
+    outline-width: 0;
+    outline-style: solid;
+    outline-color: $secondary-color;
+    outline-offset: -0.5rem;
+
     &.clickable {
         cursor: pointer;
     }
@@ -465,11 +474,12 @@ $shadow-card: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1p
         cursor: not-allowed;
     }
     &.clickable:hover,
-    &.clickable:focus,
-    &.clickable:focus-within {
+    &.clickable:focus {
+        outline-width: 0.5rem;
         background-color: $secondary-color-light;
     }
     &.clickable:active {
+        outline-width: 0.5rem;
         background-color: $secondary-color-medium;
     }
     &.clickable:checked {
