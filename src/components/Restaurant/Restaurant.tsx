@@ -3,8 +3,8 @@ import { FunctionComponent, Key } from "react";
 import { Rating, RatingType } from '../Rating';
 
 
-export const Restaurant: FunctionComponent<{key?: Key; name: string; distance: RatingType; price: RatingType; veggies: RatingType; category: string; address: string;}> = ({name, distance, price, veggies, category, address}) => (
-<li aria-label={name} className="restaurant_item">
+export const Restaurant: FunctionComponent<{key?: Key; name: string; distance: RatingType; price: RatingType; veggies: RatingType; category: string; address: string; }> = ({name, distance, price, veggies, category, address}) => (
+<li aria-label={name} className="restaurant_item clickable" tabIndex={0}>
     <section aria-label='restaurant-info' className='restaurant_info'>
         <h3 aria-label='restaurant'>{name}</h3>
         <p aria-label='category' className='h5'>{category}</p>
