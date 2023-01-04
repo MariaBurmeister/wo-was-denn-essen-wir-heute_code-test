@@ -25,7 +25,7 @@ export type CategoryTerms =
 const CategoryMap: Record<CategoryTerms, Category> = {
   all:'Alles',
   burger:'Burger',
-  italian:'Pizza / Pasta',
+  italian:'Pizza & Pasta',
   asian:'Asiatisch',
   homeMade:'Hausmannskost',
   other:'Sonstiges'
@@ -48,7 +48,7 @@ export interface Restaurant {
 type Category =
   | "Alles"
   | "Burger"
-  | "Pizza / Pasta"
+  | "Pizza & Pasta"
   | "Asiatisch"
   | "Hausmannskost"
   | "Sonstiges";

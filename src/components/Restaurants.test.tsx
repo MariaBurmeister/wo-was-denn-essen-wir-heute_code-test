@@ -39,7 +39,7 @@ const mockResultSuccess: RestaurantResult = {
             distance: '1',
             price: '2',
             veggies: '3',
-            category: 'Pizza / Pasta',
+            category: 'Pizza & Pasta',
             address: 'Test Address 3'
         }
     ]

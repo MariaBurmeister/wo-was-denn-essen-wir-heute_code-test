@@ -18,13 +18,12 @@ import {
   PriceTerms,
   VeggiesTerms,
 } from "../hooks";
-import { Skeleton } from "./design-system/Skeleton";
-import { TitleLoader } from "./design-system/Title";
+
 
 const category: Record<CategoryTerms, string> = {
   all: "Alles",
   burger: "Burger",
-  italian: "Pizza/Pasta",
+  italian: "Pizza & Pasta",
   asian: "Asiatisch",
   homeMade: "Hausmannskost",
   other: "Sonstiges",
@@ -128,9 +127,11 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
       </PageSection>
       <PageSection
         title="Results"
+        titleHelpText={<ResultsHelpText count={restaurantResults.restaurants.length} categoryTerms={getMultiSelectValues('category') as CategoryTerms[]} distanceTerm={getSingleSelectValue('distance') as DistanceTerms} priceTerm={getSingleSelectValue('price') as PriceTerms} veggiesTerm={getSingleSelectValue('veggies') as VeggiesTerms} />}
         selfLink
         variant="secondary"
         headerActions={
+          <>
             <InputButton
               variant="secondary" 
               type="checkbox"
@@ -138,9 +139,11 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
               id="randomize"
               checked={randomize}
               onChange={onRandomize}
-            >
+              >
               {randomize ? "Restore Order" : "Randomize"}
             </InputButton>
+            <Button variant="primary" onClick={onReset}>Reset</Button>
+              </>
         }
       >
         <Restaurants results={restaurantResults} />
@@ -148,3 +151,6 @@ export const LunchDecisionAssistent: FunctionComponent<{}> = () => {
     </>
   );
 };
+
+
+const ResultsHelpText: FunctionComponent<{count: number; categoryTerms: CategoryTerms[]; distanceTerm: DistanceTerms; priceTerm: PriceTerms; veggiesTerm: VeggiesTerms; }> = ({count, categoryTerms, distanceTerm, priceTerm, veggiesTerm}) => <p>Passende restaurants <strong>({count})</strong> für: <strong>{categoryTerms.map((term) => category[term]).join(', ')}</strong> / <strong>{distance[distanceTerm]}</strong> / <strong>{price[priceTerm]}</strong> / <strong>{veggies[veggiesTerm]}</strong></p>;
