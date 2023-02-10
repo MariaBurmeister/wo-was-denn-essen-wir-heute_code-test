@@ -1,6 +1,11 @@
 # Wo/was denn essen wir heute?
-###### A test/exercise project.
+This was a code test and exercise for a job position.
 
+### technologies:
+  - React
+  - Typescript
+  - Testing Library
+  - Sass
 
 ## Run the project:
 To run the project locally, follow these steps in your terminal:
